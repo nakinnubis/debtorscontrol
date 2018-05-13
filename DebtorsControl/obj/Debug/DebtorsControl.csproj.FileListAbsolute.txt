@@ -1,0 +1,234 @@
+c:\users\software2\documents\visual studio 2015\Projects\DebtorsControl\DebtorsControl\bin\roslyn\csc.exe
+c:\users\software2\documents\visual studio 2015\Projects\DebtorsControl\DebtorsControl\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+c:\users\software2\documents\visual studio 2015\Projects\DebtorsControl\DebtorsControl\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+c:\users\software2\documents\visual studio 2015\Projects\DebtorsControl\DebtorsControl\bin\roslyn\Microsoft.CodeAnalysis.dll
+c:\users\software2\documents\visual studio 2015\Projects\DebtorsControl\DebtorsControl\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+c:\users\software2\documents\visual studio 2015\Projects\DebtorsControl\DebtorsControl\bin\roslyn\Microsoft.CSharp.Core.targets
+c:\users\software2\documents\visual studio 2015\Projects\DebtorsControl\DebtorsControl\bin\roslyn\Microsoft.VisualBasic.Core.targets
+c:\users\software2\documents\visual studio 2015\Projects\DebtorsControl\DebtorsControl\bin\roslyn\System.Collections.Immutable.dll
+c:\users\software2\documents\visual studio 2015\Projects\DebtorsControl\DebtorsControl\bin\roslyn\System.Reflection.Metadata.dll
+c:\users\software2\documents\visual studio 2015\Projects\DebtorsControl\DebtorsControl\bin\roslyn\vbc.exe
+c:\users\software2\documents\visual studio 2015\Projects\DebtorsControl\DebtorsControl\bin\roslyn\VBCSCompiler.exe
+c:\users\software2\documents\visual studio 2015\Projects\DebtorsControl\DebtorsControl\bin\roslyn\VBCSCompiler.exe.config
+c:\users\software2\documents\visual studio 2015\Projects\DebtorsControl\DebtorsControl\bin\DebtorsControl.dll.config
+c:\users\software2\documents\visual studio 2015\Projects\DebtorsControl\DebtorsControl\bin\DebtorsControl.dll
+c:\users\software2\documents\visual studio 2015\Projects\DebtorsControl\DebtorsControl\bin\DebtorsControl.pdb
+c:\users\software2\documents\visual studio 2015\Projects\DebtorsControl\DebtorsControl\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+c:\users\software2\documents\visual studio 2015\Projects\DebtorsControl\DebtorsControl\bin\Microsoft.Web.Infrastructure.dll
+c:\users\software2\documents\visual studio 2015\Projects\DebtorsControl\DebtorsControl\bin\Newtonsoft.Json.dll
+c:\users\software2\documents\visual studio 2015\Projects\DebtorsControl\DebtorsControl\bin\System.Net.Http.Formatting.dll
+c:\users\software2\documents\visual studio 2015\Projects\DebtorsControl\DebtorsControl\bin\System.Web.Helpers.dll
+c:\users\software2\documents\visual studio 2015\Projects\DebtorsControl\DebtorsControl\bin\System.Web.Http.dll
+c:\users\software2\documents\visual studio 2015\Projects\DebtorsControl\DebtorsControl\bin\System.Web.Http.WebHost.dll
+c:\users\software2\documents\visual studio 2015\Projects\DebtorsControl\DebtorsControl\bin\System.Web.Mvc.dll
+c:\users\software2\documents\visual studio 2015\Projects\DebtorsControl\DebtorsControl\bin\System.Web.Razor.dll
+c:\users\software2\documents\visual studio 2015\Projects\DebtorsControl\DebtorsControl\bin\System.Web.Webpages.Deployment.dll
+c:\users\software2\documents\visual studio 2015\Projects\DebtorsControl\DebtorsControl\bin\System.Web.Webpages.dll
+c:\users\software2\documents\visual studio 2015\Projects\DebtorsControl\DebtorsControl\bin\System.Web.Webpages.Razor.dll
+c:\users\software2\documents\visual studio 2015\Projects\DebtorsControl\DebtorsControl\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+c:\users\software2\documents\visual studio 2015\Projects\DebtorsControl\DebtorsControl\bin\System.Web.Razor.xml
+c:\users\software2\documents\visual studio 2015\Projects\DebtorsControl\DebtorsControl\bin\System.Web.Webpages.xml
+c:\users\software2\documents\visual studio 2015\Projects\DebtorsControl\DebtorsControl\bin\System.Web.Webpages.Deployment.xml
+c:\users\software2\documents\visual studio 2015\Projects\DebtorsControl\DebtorsControl\bin\System.Web.Webpages.Razor.xml
+c:\users\software2\documents\visual studio 2015\Projects\DebtorsControl\DebtorsControl\bin\System.Web.Helpers.xml
+c:\users\software2\documents\visual studio 2015\Projects\DebtorsControl\DebtorsControl\bin\System.Web.Mvc.xml
+c:\users\software2\documents\visual studio 2015\Projects\DebtorsControl\DebtorsControl\bin\Newtonsoft.Json.xml
+c:\users\software2\documents\visual studio 2015\Projects\DebtorsControl\DebtorsControl\bin\System.Net.Http.Formatting.xml
+c:\users\software2\documents\visual studio 2015\Projects\DebtorsControl\DebtorsControl\bin\System.Web.Http.xml
+c:\users\software2\documents\visual studio 2015\Projects\DebtorsControl\DebtorsControl\bin\System.Web.Http.WebHost.xml
+c:\users\software2\documents\visual studio 2015\Projects\DebtorsControl\DebtorsControl\obj\Debug\DebtorsControl.dll
+c:\users\software2\documents\visual studio 2015\Projects\DebtorsControl\DebtorsControl\obj\Debug\DebtorsControl.pdb
+C:\Users\Software2\documents\visual studio 2015\Projects\DebtorsControl\DebtorsControl\bin\EntityFramework.dll
+C:\Users\Software2\documents\visual studio 2015\Projects\DebtorsControl\DebtorsControl\bin\EntityFramework.SqlServer.dll
+C:\Users\Software2\documents\visual studio 2015\Projects\DebtorsControl\DebtorsControl\bin\EntityFramework.xml
+C:\Users\Software2\documents\visual studio 2015\Projects\DebtorsControl\DebtorsControl\bin\EntityFramework.SqlServer.xml
+C:\Users\Software2\documents\visual studio 2015\Projects\DebtorsControl\DebtorsControl\obj\Debug\DebtorsControl.csprojResolveAssemblyReference.cache
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\roslyn\csc.exe
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\roslyn\System.Collections.Immutable.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\roslyn\System.Reflection.Metadata.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\roslyn\vbc.exe
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\roslyn\VBCSCompiler.exe
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\roslyn\VBCSCompiler.exe.config
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\DebtorsControl.dll.config
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\DebtorsControl.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\DebtorsControl.pdb
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\EntityFramework.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\EntityFramework.SqlServer.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\Microsoft.Web.Infrastructure.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\Newtonsoft.Json.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\System.Net.Http.Formatting.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\System.Web.Helpers.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\System.Web.Http.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\System.Web.Http.WebHost.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\System.Web.Mvc.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\System.Web.Razor.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\System.Web.Webpages.Deployment.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\System.Web.Webpages.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\System.Web.Webpages.Razor.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\EntityFramework.xml
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\EntityFramework.SqlServer.xml
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\System.Web.Razor.xml
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\System.Web.Webpages.xml
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\System.Web.Webpages.Deployment.xml
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\System.Web.Webpages.Razor.xml
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\System.Web.Helpers.xml
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\System.Web.Mvc.xml
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\Newtonsoft.Json.xml
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\System.Net.Http.Formatting.xml
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\System.Web.Http.xml
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\System.Web.Http.WebHost.xml
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\obj\Debug\DebtorsControl.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\obj\Debug\DebtorsControl.pdb
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\EPPlus.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\EPPlus.xml
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\roslyn\csc.exe.config
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\roslyn\csc.rsp
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\roslyn\csi.exe
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\roslyn\csi.exe.config
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\roslyn\csi.rsp
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\roslyn\System.AppContext.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\roslyn\System.Console.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\roslyn\System.IO.Compression.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\roslyn\System.IO.FileSystem.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\roslyn\System.IO.Pipes.AccessControl.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\roslyn\System.IO.Pipes.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\roslyn\System.Security.AccessControl.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\roslyn\System.Security.Claims.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\roslyn\System.Security.Principal.Windows.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\roslyn\System.ValueTuple.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\roslyn\System.Xml.XmlDocument.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\roslyn\System.Xml.XPath.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\roslyn\vbc.exe.config
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\roslyn\vbc.rsp
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\LinqToExcel.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\log4net.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\Remotion.Data.Linq.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\Remotion.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\Remotion.Interfaces.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\LinqToExcel.xml
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\log4net.xml
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\DebtorsControl.dll.config
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\DebtorsControl.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\DebtorsControl.pdb
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\roslyn\csc.exe
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\roslyn\csc.exe.config
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\roslyn\csc.rsp
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\roslyn\csi.exe
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\roslyn\csi.exe.config
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\roslyn\csi.rsp
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\roslyn\System.AppContext.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\roslyn\System.Console.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\roslyn\System.Diagnostics.Process.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\roslyn\System.IO.Compression.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\roslyn\System.IO.FileSystem.DriveInfo.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\roslyn\System.IO.Pipes.AccessControl.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\roslyn\System.IO.Pipes.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\roslyn\System.Security.AccessControl.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\roslyn\System.Security.Claims.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\roslyn\System.Security.Principal.Windows.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\roslyn\System.Threading.Thread.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\roslyn\System.ValueTuple.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\roslyn\System.Xml.XPath.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\roslyn\vbc.exe
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\roslyn\vbc.exe.config
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\roslyn\vbc.rsp
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\roslyn\VBCSCompiler.exe
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\EntityFramework.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\EntityFramework.SqlServer.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\EPPlus.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\LinqToExcel.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\log4net.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\Newtonsoft.Json.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\Remotion.Data.Linq.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\Remotion.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\Remotion.Interfaces.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\System.Net.Http.Formatting.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\System.Web.Helpers.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\System.Web.Http.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\System.Web.Http.WebHost.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\System.Web.Mvc.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\System.Web.Razor.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\System.Web.WebPages.Deployment.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\System.Web.WebPages.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\System.Web.WebPages.Razor.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\EntityFramework.xml
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\EntityFramework.SqlServer.xml
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\EPPlus.xml
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\LinqToExcel.xml
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\log4net.xml
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\Newtonsoft.Json.xml
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\System.Net.Http.Formatting.xml
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\System.Web.Helpers.xml
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\System.Web.Http.xml
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\System.Web.Http.WebHost.xml
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\System.Web.Mvc.xml
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\System.Web.Razor.xml
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\System.Web.WebPages.xml
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\System.Web.WebPages.Deployment.xml
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\bin\System.Web.WebPages.Razor.xml
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\obj\Debug\DebtorsControl.csprojResolveAssemblyReference.cache
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\obj\Debug\DebtorsControl.csproj.CoreCompileInputs.cache
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\obj\Debug\DebtorsControl.csproj.CopyComplete
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\obj\Debug\DebtorsControl.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\DebtorsControl\obj\Debug\DebtorsControl.pdb
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\roslyn\Microsoft.Managed.Core.targets
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\Google.Protobuf.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\MySql.Data.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\nunit.framework.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\Rotativa.dll
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\Google.Protobuf.xml
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\MySql.Data.xml
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\nunit.framework.pdb
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\nunit.framework.xml
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\obj\Debug\DebtorsControl.csprojResolveAssemblyReference.cache

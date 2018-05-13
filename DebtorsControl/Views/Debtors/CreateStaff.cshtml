@@ -1,0 +1,69 @@
+﻿@model DebtorsControl.ViewModel.StaffViewModel
+@{
+    ViewBag.Title = "Create Staff";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            @using (Html.BeginForm())
+            {
+                <div class="panel panel-danger">
+                    <div class="panel-heading">
+                        <h2 class="text-center">Create Staff</h2>
+                        <p class="text-danger">@ViewBag.Client</p>
+                        <p class="text-success">@ViewBag.Success</p>
+                        <p class="text-danger">@ViewBag.Staff</p>
+                        <p class="text-danger">@ViewBag.Problem</p>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label class="text-black">Enter Staff Full Name</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" name="FullName" placeholder="" class="form-control" required />
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label for="Password" class="text-black">Enter Staff default password</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="password" name="Password" placeholder="" class="form-control" required />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label for="" class="text-black">
+                                        Enter staff email address
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="email" name="Email" placeholder="" class="form-control" required />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label for="" class="text-black">
+                                        Select Staff Role or Department
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                    @Html.DropDownListFor(model => model.StaffRoles, new SelectList(Model.StaffRoles, "Role", "Role"), new { @class = "form-control", })
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-md-offset-4 pull-right">
+                                <input type="submit" class="btn btn-danger" value="Create Staff" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>

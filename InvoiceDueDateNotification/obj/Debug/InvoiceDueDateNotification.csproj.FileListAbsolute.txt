@@ -1,0 +1,16 @@
+C:\Users\Software2\Documents\Visual Studio 2015\Projects\DebtorsControl\InvoiceDueDateNotification\bin\Debug\InvoiceDueDateNotification.exe.config
+C:\Users\Software2\Documents\Visual Studio 2015\Projects\DebtorsControl\InvoiceDueDateNotification\bin\Debug\InvoiceDueDateNotification.exe
+C:\Users\Software2\Documents\Visual Studio 2015\Projects\DebtorsControl\InvoiceDueDateNotification\bin\Debug\InvoiceDueDateNotification.pdb
+C:\Users\Software2\Documents\Visual Studio 2015\Projects\DebtorsControl\InvoiceDueDateNotification\obj\Debug\InvoiceDueDateNotification.csprojResolveAssemblyReference.cache
+C:\Users\Software2\Documents\Visual Studio 2015\Projects\DebtorsControl\InvoiceDueDateNotification\obj\Debug\InvoiceDueDateNotification.exe
+C:\Users\Software2\Documents\Visual Studio 2015\Projects\DebtorsControl\InvoiceDueDateNotification\obj\Debug\InvoiceDueDateNotification.pdb
+C:\inetpub\wwwroot\DebtorsControl\InvoiceDueDateNotification\bin\Debug\InvoiceDueDateNotification.exe.config
+C:\inetpub\wwwroot\DebtorsControl\InvoiceDueDateNotification\obj\Debug\InvoiceDueDateNotification.exe
+C:\inetpub\wwwroot\DebtorsControl\InvoiceDueDateNotification\obj\Debug\InvoiceDueDateNotification.pdb
+C:\inetpub\wwwroot\DebtorsControl\InvoiceDueDateNotification\bin\Debug\InvoiceDueDateNotification.exe
+C:\inetpub\wwwroot\DebtorsControl\InvoiceDueDateNotification\bin\Debug\InvoiceDueDateNotification.pdb
+C:\inetpub\wwwroot\DebtorsControl\InvoiceDueDateNotification\bin\Debug\EntityFramework.dll
+C:\inetpub\wwwroot\DebtorsControl\InvoiceDueDateNotification\bin\Debug\EntityFramework.SqlServer.dll
+C:\inetpub\wwwroot\DebtorsControl\InvoiceDueDateNotification\bin\Debug\EntityFramework.xml
+C:\inetpub\wwwroot\DebtorsControl\InvoiceDueDateNotification\bin\Debug\EntityFramework.SqlServer.xml
+C:\inetpub\wwwroot\DebtorsControl\InvoiceDueDateNotification\obj\Debug\InvoiceDueDateNotification.csprojResolveAssemblyReference.cache

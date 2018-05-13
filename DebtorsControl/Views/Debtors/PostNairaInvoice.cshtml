@@ -1,0 +1,239 @@
+﻿@model DebtorsControl.ViewModel.ClientsViewModel
+@{
+    ViewBag.Title = "Post Naira Invoice";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2 class="text-center h2">Post Naira Invoice</h2>
+@using (Html.BeginForm("PostNaira", "Debtors", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="form-horizontal">
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <p class="text-success">@ViewBag.Success</p>
+                    <p class="text-danger">@ViewBag.Error</p>
+                    <p class="text-danger">@ViewBag.PreventDuplicate</p>
+                    <div class="form-group">
+                        <div class="col-md-4">
+                            <label for="" class="text-black">
+                                Select a Client to Invoice
+                            </label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.DropDownListFor(model => model.GetClients, new SelectList(Model.GetClients, "ClientName", "ClientName"), new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.GetClients, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-4">
+                            <label for="" class="text-black">
+                                Invoice Number
+                            </label>
+                        </div>
+                        <div class="col-md-8">
+                            <select class="form-control" name="invoicenumber" id="invoicenumber"></select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-4">
+                            <label for="" class="text-black">
+                                Service Entry Number
+                            </label>
+                        </div>
+                        <div class="col-md-8">
+                            <select class="form-control" name="servicenumber" id="servicenumber"></select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label class="text-black">Invoiced Date</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="date" class="form-control" name="year" placeholder="Year" required />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label class="text-black">Date Submitted</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="date" class="form-control" name="DateSubmitted" placeholder="Date Submitted" id="DateSubmitted" required />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label class="text-black">Due Date</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="date" class="form-control" name="DueDate" placeholder="Due Date" id="DueDate" required />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label>Exchange Rate</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" name="FxRate" placeholder="Fx rate" id="FxRate" required />
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label for="" class="text-black">
+                                        Enter Amount
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" name="Amount" placeholder="Amount" id="Amount" required />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label for="" class="text-black">
+                                        Enter VAT
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" name="Vat" placeholder="VAT" id="Vat" required />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label for="" class="text-black">
+                                        Enter Total Invoiced
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" name="TotalInvoice" placeholder="Total Invoiced" id="TotalInvoice" required />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label for="" class="text-black">
+                                        Enter Payable
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" name="Payable" placeholder="Payable" id="Payable" required />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label for="" class="text-black">
+                                        Enter LCD charge
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" name="LcdCharge" placeholder="Lcd Charge" id="LcdCharge" required />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label for="" class="text-black">
+                                        Enter Amount Paid
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" name="AmountPaid" placeholder="Amount Paid" id="AmountPaid" required />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label for="" class="text-black">
+                                    Enter Outstanding
+                                </label>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="Outstanding" placeholder="Outstanding" id="Outstanding" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label for="" class="text-black">
+                                    Enter WithHolding Tax
+                                </label>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="WithHoldingTax" placeholder="WithHolding Tax" id="WithHoldingTax" required />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label for="" class="text-black">
+                                    Naira Equivalent
+                                </label>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="NairaEquiv" placeholder="Naira Equivalent" id="NairaEquiv" required />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-2">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <textarea rows="5" cols="50" name="comments" placeholder="Enter Comments" autofocus="" style="width: 100%;
+                                  "></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Post Naira Invoice" class="btn btn-primary" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}

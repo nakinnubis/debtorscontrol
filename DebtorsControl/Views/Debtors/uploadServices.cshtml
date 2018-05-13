@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "upload Services";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            @using (Html.BeginForm())
+            { <h2 class="text-center">upload Services Entries</h2>
+            <div class="form-inline">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <input type="file" class="form-control-file" name="file" id="file" />
+                        </div>
+                        <input type="submit" class="btn btn-success" />
+                    </div>
+
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</div>

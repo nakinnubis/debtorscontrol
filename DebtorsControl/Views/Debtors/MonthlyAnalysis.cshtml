@@ -1,0 +1,246 @@
+﻿@using System.Runtime.Serialization
+@model DebtorsControl.ViewModel.InvoiceViewModel
+@{
+    ViewBag.Title = "MonthlyAnalysis";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center">Monthly Analysis</h2>
+            <div class="row">
+                @using (Html.BeginForm("MonthlyAnalysis", "Debtors", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label class="text-black text-center" for="getClient">Select Client Name</label>
+                            </div>
+                            <div class="col-md-8">
+                                @Html.DropDownListFor(model => model.GetClients, new SelectList(Model.GetClients, "ClientName", "ClientName"), new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.GetClients, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label class="text-black text-center" for="getClient">Select Year</label>
+                            </div>
+                            <div class="col-md-8">
+                                @Html.DropDownListFor(model => model.YearList, new SelectList(Model.YearList, "Years", "Years"), new { @class = "form-control", onchange = "this.form.submit()" })
+                                @Html.ValidationMessageFor(model => model.GetClients, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                }
+                <h4 id="selectedYear" class="hidden">@Session["YearList"]</h4>
+                <h4 id="getClient" class="hidden">@Session["GetClients"]</h4>
+                @{
+
+                    if (Model.NairaInvoices != null)
+                    {
+                        <br />
+                        <br />
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="/img/logo.png" alt="@Session["GetClients"]" class="img-responsive" style="max-width: 30%; max-height:30%" />
+                            </div>
+                            <div class="col-md-4">
+                                <h2 class="text-center h1">@Session["GetClients"]</h2>
+                            </div>
+                            <div class="col-md-4">
+                                @{
+                                    var clientlogo = Model.GetClients.Where(c => c.ClientName.Equals(Session["GetClients"])).Select(c => c.ClientLogo).FirstOrDefault();
+
+                                }
+                                <img src="/@clientlogo" alt="@Session["GetClients"]" class="img-responsive" style="max-width: 30%; max-height:30%" />
+                            </div>
+                        </div>
+
+                        <h2 class="text-center"> Naira Invoice</h2>
+
+                        <table class="table table-striped table-bordered" id="nairapart">
+                            <thead>
+                                <tr>
+                                    <th>XRate</th>
+                                    <th>date</th>
+                                    <th>Invoice Number</th>
+                                    <th>SE number</th>
+                                    <th>Amount</th>
+                                    <th>VAT</th>
+                                    <th>Invoiced</th>
+                                    <th>Payable</th>
+                                    <th>Amount Paid</th>
+                                    <th>Naira Eqiv</th>
+                                    <th>Lcd</th>
+                                    <th>Outsnd</th>
+                                    <th>Date Submitted</th>
+                                    <th>Due Date</th>
+                                    <th>Date Paid</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var naira in Model.NairaInvoices)
+                                {
+                                    <tr>
+                                        @{ var d = DateTime.Parse(naira.Date).ToString("MMMM-yyyy");
+
+                                        }
+                                        <td>@($"{naira.FxRate:n0}")</td>
+                                        <td>@d</td>
+                                        <td>@naira.InvoiceNumber</td>
+                                        <td>@naira.SeNumber</td>
+                                        <td>@($"{naira.Amount:n0}")</td>
+                                        <td>@($"{naira.Vat:n0}")</td>
+                                        <td>@($"{naira.TotalInvoice:n0}")</td>
+                                        <td>@($"{naira.Payable:n0}")</td>
+                                        <td>@($"{naira.AmountPaid:n0}")</td>
+                                        <td>@($"{naira.NairaValue:n0}")</td>
+                                        <td>@($"{naira.LcdCharge:n0}")</td>
+                                        <td>@($"{naira.Outstanding:n0}")</td>
+                                        <td>@naira.DateSubmitted.ToString("dd-MMM-yyyy")</td>
+                                        <td>@naira.DueDate.ToString("dd-MMM-yyyy")</td>
+                                        @if (naira.DatePaid == null)
+                                        {
+                                            <td></td>
+                                        }
+                                        else
+                                        {
+                                            <td>@naira.DatePaid.Value.ToString("dd-MMM-yyyy")</td>
+                                        }
+
+                                    </tr>
+                                            }
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>@($"{Model.NairaInvoices.Sum(c => c.Amount):n0}")</td>
+                                    <td>@($"{Model.NairaInvoices.Sum(c => c.Vat):n0}")</td>
+                                    <td>@($"{Model.NairaInvoices.Sum(c => c.TotalInvoice):n0}")</td>
+                                    <td>@($"{Model.NairaInvoices.Sum(c => c.Payable):n0}")</td>
+                                    <td>@($"{Model.NairaInvoices.Sum(c => c.AmountPaid):n0}")</td>
+                                    <td>@($"{Model.NairaInvoices.Sum(c => c.NairaValue):n0}")</td>
+                                    <td>@($"{Model.NairaInvoices.Sum(c => c.LcdCharge):n0}")</td>
+                                    <td>@($"{Model.NairaInvoices.Sum(c => c.Outstanding):n0}")</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br />
+                        <br />
+                                            }
+                                            else
+                                            {
+                                                <div class=""></div>
+                                                <br />
+                                                <br />
+
+                                            }
+
+
+                                            if (Model.DollarInvoices != null)
+                                            {
+
+                                                <h2 class="text-center">Dollar Invoice</h2>
+                                                <br />
+                                                <br />
+                                                <table class="table table-striped table-bordered" id="dollarpart">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>date</th>
+                                                            <th>Invoice No</th>
+                                                            <th>SE number</th>
+                                                            <th>Amount</th>
+                                                            <th>VAT</th>
+                                                            <th>Invoiced</th>
+                                                            <th>Payable</th>
+                                                            <th>Amount Paid</th>
+                                                            <th>Lcd</th>
+                                                            <th>Outsnd</th>
+                                                            <th>Date Submitted</th>
+                                                            <th>Due Date</th>
+                                                            <th>Date Paid</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach (var dola in Model.DollarInvoices)
+                                                        {
+                                                            <tr>
+                                                                @{ var d = DateTime.Parse(dola.Date).ToString("MMM-yyyy");
+
+                                                                }
+                                                                <td>@d</td>
+                                                                <td>@dola.InvoiceNumber</td>
+                                                                <td>@dola.SeNumber</td>
+                                                                <td>@($"{dola.Amount:n0}")</td>
+                                                                <td>@($"{dola.Vat:n0}")</td>
+                                                                <td>@($"{dola.TotalInvoice:n0}")</td>
+                                                                <td>@($"{dola.Payable:n0}")</td>
+                                                                <td>@($"{dola.AmountPaid:n0}")</td>
+                                                                <td>@($"{dola.LcdCharge:n0}")</td>
+                                                                <td>@($"{dola.Outstanding:n0}")</td>
+                                                                <td>@dola.DateSubmitted.ToString("dd-MMM-yyyy")</td>
+                                                                <td>@dola.DueDate.ToString("dd-MMM-yyyy")</td>
+                                                                <td>@dola.DatePaid.ToString("dd-MMM-yyyy")</td>
+                                                            </tr>
+
+                                                                    }
+                                                        <tr>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td>@($"{Model.DollarInvoices.Sum(c => c.Amount):n0}")</td>
+                                                            <td>@($"{Model.DollarInvoices.Sum(c => c.Vat):n0}")</td>
+                                                            <td>@($"{Model.DollarInvoices.Sum(c => c.TotalInvoice):n0}")</td>
+                                                            <td>@($"{Model.DollarInvoices.Sum(c => c.Payable):n0}")</td>
+                                                            <td>@($"{Model.DollarInvoices.Sum(c => c.AmountPaid):n0}")</td>
+                                                            <td>@($"{Model.DollarInvoices.Sum(c => c.LcdCharge):n0}")</td>
+                                                            <td>@($"{Model.DollarInvoices.Sum(c => c.Outstanding):n0}")</td>
+                                                            <td></td>
+                                                            <td></td>
+
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <br />
+                                                <br />
+
+                                                <div class="form-group">
+                                                    @using (Html.BeginForm("Datadownload", "Debtors", FormMethod.Post))
+                                                    {
+                                                        <input type="text" name="GetClients" value="" id="input1" hidden />
+                                                        <input type="text" name="YearList" value="" id="input2" hidden />
+                                                        <input type="submit" class="btn btn-danger" value="download" name="submit" />
+                                                    }
+                                                </div>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <br />
+                                                                        <br />
+                                                                        <div class=""></div>
+                                                                    }
+
+                }
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    document.getElementById("YearList").value = document.getElementById("selectedYear").innerHTML;
+    document.getElementById("GetClients").value = document.getElementById("getClient").innerHTML;
+    document.getElementById("input1").value = document.getElementById("getClient").innerHTML;
+    document.getElementById("input2").value = document.getElementById("selectedYear").innerHTML;
+</script>
+

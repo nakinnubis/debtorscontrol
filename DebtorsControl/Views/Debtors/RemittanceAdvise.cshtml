@@ -1,0 +1,88 @@
+﻿@model DebtorsControl.ViewModel.RemittanceViewModel
+@{
+    ViewBag.Title = "Remittance Advise";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-horizontal">
+                @using (Html.BeginForm("RemittanceAdvise", "Debtors", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                { <p class="text-success text-center">@ViewBag.Success</p>
+                <p class="text-success text-center">@ViewBag.Error</p>
+                <div class="form-group">
+                    <div class="col-md-4"><label class="text-black"> Select Client</label></div>
+                    <div class="col-md-8">
+                        @Html.DropDownListFor(model => model.DoRemittance, new SelectList(Model.DoRemittance, "ClientName", "ClientName"), new { @class = "form-control" })
+                    </div>
+                </div>
+                    <div class="form-group">
+                        <div class="col-md-4">
+                            <label class="text-black"> Select Invoice No</label>
+                        </div>
+                        <div class="col-md-8">@Html.DropDownList("InvoiceNumber", new SelectList(string.Empty, "value", "Text"), new { @class = "form-control" })</div>
+
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-4">
+                            <label class="text-black"> Select SE No</label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.DropDownList("ServiceNumber", new SelectList(string.Empty, "value", "Text"), new { @class = "form-control" })
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-4">
+                            <label class="text-black"> Select Invoice Type</label>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.DropDownListFor(model => model.InvoiceTypes, new SelectList(Model.InvoiceTypes, "InvoicesType", "InvoicesType"), new { @class = "form-control" })
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-4">
+                            <label class="text-black"> Enter amount Paid</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" placeholder="Amount paid by selected client for the invoice number" name="AmountPaid" id="Amount_Paid" required autofocus />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-4">
+                            <label class="text-black">Date Paid</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="date" class="form-control" name="DatePaid" placeholder="Date Paid" id="DateSubmitted" required />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-4">
+                            <label class="text-black"> Fx rate</label>
+                        </div>
+                        <div class="col-md-8"><input type="hidden" class="form-control" placeholder="fx rate for the dollar" name="Fxrate" id="fxrate" required autofocus /></div>
+
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-8 pull-right">
+                            @Html.TextArea("Comments", new { @class = "form-control", rows = "5", cols = "40" })
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-8 pull-right">
+                            <input class="form-control" type="file" name="file" id="file" />
+                        </div>
+
+                    </div>
+                    <input type="submit" class="btn btn-danger pull-right" value="submit remittance" />
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/CustomJs/remittance.js"></script>

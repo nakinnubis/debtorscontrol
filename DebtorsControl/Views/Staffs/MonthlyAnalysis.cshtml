@@ -1,0 +1,138 @@
+﻿@model DebtorsControl.ViewModel.InvoiceViewModel
+@{
+    ViewBag.Title = "Monthly Analysis";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center">Monthly Analysis</h2>
+            <div class="row">
+                @using (Html.BeginForm("MonthlyAnalysis", "Debtors", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                @Html.DropDownListFor(model => model.GetClients, new SelectList(Model.GetClients, "ClientName", "ClientName"), new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.GetClients, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                @Html.DropDownListFor(model => model.YearList, new SelectList(Model.YearList, "Years", "Years"), new { @class = "form-control", onchange = "this.form.submit()" })
+                                @Html.ValidationMessageFor(model => model.GetClients, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                }
+                <h4 id="selectedYear" class="hidden">@Session["YearList"]</h4>
+                <h4 id="getClient" class="hidden">@Session["GetClients"]</h4>
+                @{
+
+                    if (Model.NairaInvoices != null)
+                    {
+                        <h2 class="text-center h1">@Model.NairaInvoices.Select(c => c.ClientName).FirstOrDefault()</h2>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>date</th>
+                                    <th>SE number</th>
+                                    <th>Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var naira in Model.NairaInvoices)
+                                {
+                                    <tr>
+                                        <td>@naira.Date</td>
+                                        <td>@naira.SeNumber</td>
+                                        <td>@naira.Amount</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+                    }
+                    else
+                    {
+                        <div class=""></div>
+                    }
+
+
+                    if (Model.DollarInvoices != null)
+                    {  <h2 class="text-center h1">@Model.DollarInvoices.Select(c => c.ClientName).FirstOrDefault()</h2>
+
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>date</th>
+                                <th>Invoice Number</th>
+                                <th>SE number</th>
+                                <th>VAT</th>
+                                <th>Invoiced</th>
+                                <th>Payable</th>
+                                <th>1% Lcd charge</th>
+                                <th>Amount Paid</th>
+                                <th>Date Submitted</th>
+                                <th>Due Date</th>
+                                <th>Date Paid</th>
+                                <th>Amount</th>
+                                <th>Comments</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var dola in Model.DollarInvoices)
+                            {
+                                <tr>
+                                    <td>@dola.Date</td>
+                                    <td>@dola.InvoiceNumber</td>
+                                    <td>@dola.SeNumber</td>
+                                    <td>@dola.Vat</td>
+                                    <td>@dola.TotalInvoice</td>
+                                    <td>@dola.Payable</td>
+                                    <td>@dola.LcdCharge</td>
+                                    <td>@dola.AmountPaid</td>
+                                    <td>@dola.DateSubmitted.ToShortDateString()</td>
+                                    <td>@dola.DueDate.ToShortDateString()</td>
+                                    <td>@dola.DatePaid.ToShortDateString()</td>
+                                    <td>@dola.Amount</td>
+                                    <td>@dola.Comments</td>
+                                </tr>
+
+                            }
+                        </tbody>
+                    </table>
+
+                    <div class="form-group">
+                        @using (Html.BeginForm("Datadownload", "Debtors", FormMethod.Post))
+                        {
+                            <input type="text" name="GetClients" value="" id="input1" hidden />
+                                <input type="text" name="YearList" value="" id="input2" hidden />
+                                <input type="submit" class="btn btn-danger" value="download" name="submit" />
+                        }
+                    </div>
+                    }
+                    else
+                    {
+                        <div class=""></div>
+                    }
+
+                }
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    document.getElementById("YearList").value = document.getElementById("selectedYear").innerHTML;
+    document.getElementById("GetClients").value = document.getElementById("getClient").innerHTML;
+    document.getElementById("input1").value = document.getElementById("getClient").innerHTML;
+    document.getElementById("input2").value = document.getElementById("selectedYear").innerHTML;
+</script>
+

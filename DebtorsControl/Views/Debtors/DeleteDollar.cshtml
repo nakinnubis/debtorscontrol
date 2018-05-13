@@ -1,0 +1,100 @@
+﻿@model DebtorsControl.ViewModel.DollarInvoice
+@{
+    ViewBag.Title = "Delete Dollar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p class="text-center">@ViewBag.DeleteMessage</p>
+@if (Model != null)
+{
+    <table class="table table-striped table-responsive">
+        <thead>
+            <tr>
+                <th>date</th>
+                <th>Invoice Number</th>
+                <th>SE number</th>
+                <th>VAT</th>                
+                <th>Invoiced</th>
+                <th>Payable</th>
+                <th>1% Lcd charge</th>
+                <th>Amount Paid</th>
+                <th>Date Submitted</th>
+                <th>Due Date</th>
+                <th>Date Paid</th>
+                <th>Amount</th>                
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="">
+                <td>@Model.Date</td>
+                <td>@Model.InvoiceNumber</td>
+                <td>@Model.SeNumber</td>
+                <td>@Model.Vat</td>                
+                <td>@Model.TotalInvoice</td>
+                <td>@Model.Payable</td>
+                <td>@Model.LcdCharge</td>
+                <td>@Model.AmountPaid</td>
+                <td>@Model.DateSubmitted.ToString("dd-MMM-yyyy")</td>
+                <td>@Model.DueDate.ToString("dd-MMM-yyyy")</td>
+                <td>@Model.DueDate.ToString("dd-MMM-yyyy")</td>
+                <td>@($"{Model.Amount:n0}")</td>               
+                <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div id="deleteModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
+                </div>
+                @using (Html.BeginForm("RemoveDollar", "Debtors", FormMethod.Post))
+                {
+                    <div class="modal-body">
+                        <p>Are you sure you want to delete the dollar part of the invoice ?</p>
+                        <div class="form-horizontal">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label class="text-black">
+                                        Invoice Number
+                                    </label>
+                                </div><div class="col-md-9">
+                                    <input type="text" name="invoicenum" value="@Model.InvoiceNumber" class="form-control" />
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label class="text-black">
+                                        SE Number
+                                    </label>
+                                </div>
+                                <div class="col-md-9">
+                                    <input type="text" name="servicenum" value="@Model.SeNumber" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+
+
+                        if you are sure click on the "Ok Delete" button, if you are not sure click on the "Close" button
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-danger">Ok Delete</button>
+
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                    @*@Html.ActionLink("Ok Delete", "RemoveNaira", new { invoicenum = Model.InvoiceNumber, servicenum = Model.SeNumber }, new { @class = "btn btn-danger" })*@
+                }
+
+            </div>
+
+        </div>
+    </div>
+
+}
+

@@ -1,0 +1,338 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="pdInvoiceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ActivityLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Staffinfo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TypeofActivity" Type="text" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Clients">
+    <Key>
+      <PropertyRef Name="ClientName" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClientName" Type="nvarchar" MaxLength="400" Nullable="false" />
+    <Property Name="ClientCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Dollars">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClientName" Type="nvarchar" MaxLength="400" Nullable="false" />
+    <Property Name="Year" Type="int" Nullable="false" />
+    <Property Name="Month" Type="int" Nullable="false" />
+    <Property Name="InvoiceNumber" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="SENumber" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="VAT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="TotalInvoice" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Payable" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="LcdCharge" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="AmountPaid" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Outstanding" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="DateSubmitted" Type="date" Nullable="false" />
+    <Property Name="DueDate" Type="date" Nullable="false" />
+    <Property Name="DatePaid" Type="date" Nullable="false" />
+    <Property Name="WithHoldinTax" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="RemittanceAdvise" Type="nvarchar(max)" />
+    <Property Name="Comments" Type="text" />
+  </EntityType>
+  <EntityType Name="Invoices">
+    <Key>
+      <PropertyRef Name="InvoiceNumber" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InvoiceNumber" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="ClientName" Type="nvarchar" MaxLength="400" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Nairas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClientName" Type="nvarchar" MaxLength="400" Nullable="false" />
+    <Property Name="Year" Type="int" Nullable="false" />
+    <Property Name="Month" Type="int" Nullable="false" />
+    <Property Name="InvoiceNumber" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="SENumber" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="FxRate" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="VAT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="TotalInvoice" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Payable" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="LcdCharge" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="AmountPaid" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Outstanding" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="DateSubmitted" Type="date" Nullable="false" />
+    <Property Name="DueDate" Type="date" Nullable="false" />
+    <Property Name="DatePaid" Type="date" />
+    <Property Name="WithHoldingTax" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="RemittanceAdvise" Type="nvarchar(max)" />
+    <Property Name="Comments" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Reports">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClientName" Type="nvarchar" MaxLength="400" Nullable="false" />
+    <Property Name="Year" Type="int" Nullable="false" />
+    <Property Name="Month" Type="int" Nullable="false" />
+    <Property Name="InvoiceNumber" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="SENumber" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="AmountPaid" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Outstanding" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="DatePaid" Type="date" Nullable="false" />
+    <Property Name="WithHoldingTaxStatus" Type="bit" Nullable="false" />
+    <Property Name="RemittanceAdviseStatus" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="Role" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Role" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ServiceEnteries">
+    <Key>
+      <PropertyRef Name="SENumber" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SENumber" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="InvoiceNumber" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="ClientName" Type="nvarchar" MaxLength="400" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Staffs">
+    <Key>
+      <PropertyRef Name="Email" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="FullName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Role" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Dollars_Clients">
+    <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+    <End Role="Dollars" Type="Self.Dollars" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clients">
+        <PropertyRef Name="ClientName" />
+      </Principal>
+      <Dependent Role="Dollars">
+        <PropertyRef Name="ClientName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Dollars_Invoices">
+    <End Role="Invoices" Type="Self.Invoices" Multiplicity="1" />
+    <End Role="Dollars" Type="Self.Dollars" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Invoices">
+        <PropertyRef Name="InvoiceNumber" />
+      </Principal>
+      <Dependent Role="Dollars">
+        <PropertyRef Name="InvoiceNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Dollars_ServiceEnteries">
+    <End Role="ServiceEnteries" Type="Self.ServiceEnteries" Multiplicity="1" />
+    <End Role="Dollars" Type="Self.Dollars" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceEnteries">
+        <PropertyRef Name="SENumber" />
+      </Principal>
+      <Dependent Role="Dollars">
+        <PropertyRef Name="SENumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Invoices_Clients">
+    <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+    <End Role="Invoices" Type="Self.Invoices" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clients">
+        <PropertyRef Name="ClientName" />
+      </Principal>
+      <Dependent Role="Invoices">
+        <PropertyRef Name="ClientName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Nairas_Clients">
+    <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+    <End Role="Nairas" Type="Self.Nairas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clients">
+        <PropertyRef Name="ClientName" />
+      </Principal>
+      <Dependent Role="Nairas">
+        <PropertyRef Name="ClientName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Nairas_Invoices">
+    <End Role="Invoices" Type="Self.Invoices" Multiplicity="1" />
+    <End Role="Nairas" Type="Self.Nairas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Invoices">
+        <PropertyRef Name="InvoiceNumber" />
+      </Principal>
+      <Dependent Role="Nairas">
+        <PropertyRef Name="InvoiceNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Nairas_ServiceEnteries">
+    <End Role="ServiceEnteries" Type="Self.ServiceEnteries" Multiplicity="1" />
+    <End Role="Nairas" Type="Self.Nairas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceEnteries">
+        <PropertyRef Name="SENumber" />
+      </Principal>
+      <Dependent Role="Nairas">
+        <PropertyRef Name="SENumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reports_Clients">
+    <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+    <End Role="Reports" Type="Self.Reports" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clients">
+        <PropertyRef Name="ClientName" />
+      </Principal>
+      <Dependent Role="Reports">
+        <PropertyRef Name="ClientName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reports_Invoices">
+    <End Role="Invoices" Type="Self.Invoices" Multiplicity="1" />
+    <End Role="Reports" Type="Self.Reports" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Invoices">
+        <PropertyRef Name="InvoiceNumber" />
+      </Principal>
+      <Dependent Role="Reports">
+        <PropertyRef Name="InvoiceNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reports_ServiceEnteries">
+    <End Role="ServiceEnteries" Type="Self.ServiceEnteries" Multiplicity="1" />
+    <End Role="Reports" Type="Self.Reports" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceEnteries">
+        <PropertyRef Name="SENumber" />
+      </Principal>
+      <Dependent Role="Reports">
+        <PropertyRef Name="SENumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceEnteries_Clients">
+    <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+    <End Role="ServiceEnteries" Type="Self.ServiceEnteries" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clients">
+        <PropertyRef Name="ClientName" />
+      </Principal>
+      <Dependent Role="ServiceEnteries">
+        <PropertyRef Name="ClientName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceEnteries_Invoices">
+    <End Role="Invoices" Type="Self.Invoices" Multiplicity="1" />
+    <End Role="ServiceEnteries" Type="Self.ServiceEnteries" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Invoices">
+        <PropertyRef Name="InvoiceNumber" />
+      </Principal>
+      <Dependent Role="ServiceEnteries">
+        <PropertyRef Name="InvoiceNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Staffs_Roles">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+    <End Role="Staffs" Type="Self.Staffs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="Role" />
+      </Principal>
+      <Dependent Role="Staffs">
+        <PropertyRef Name="Role" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="pdInvoiceModelStoreContainer">
+    <EntitySet Name="ActivityLog" EntityType="Self.ActivityLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Dollars" EntityType="Self.Dollars" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Invoices" EntityType="Self.Invoices" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Nairas" EntityType="Self.Nairas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Reports" EntityType="Self.Reports" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ServiceEnteries" EntityType="Self.ServiceEnteries" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Staffs" EntityType="Self.Staffs" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Dollars_Clients" Association="Self.FK_Dollars_Clients">
+      <End Role="Clients" EntitySet="Clients" />
+      <End Role="Dollars" EntitySet="Dollars" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Dollars_Invoices" Association="Self.FK_Dollars_Invoices">
+      <End Role="Invoices" EntitySet="Invoices" />
+      <End Role="Dollars" EntitySet="Dollars" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Dollars_ServiceEnteries" Association="Self.FK_Dollars_ServiceEnteries">
+      <End Role="ServiceEnteries" EntitySet="ServiceEnteries" />
+      <End Role="Dollars" EntitySet="Dollars" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Invoices_Clients" Association="Self.FK_Invoices_Clients">
+      <End Role="Clients" EntitySet="Clients" />
+      <End Role="Invoices" EntitySet="Invoices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Nairas_Clients" Association="Self.FK_Nairas_Clients">
+      <End Role="Clients" EntitySet="Clients" />
+      <End Role="Nairas" EntitySet="Nairas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Nairas_Invoices" Association="Self.FK_Nairas_Invoices">
+      <End Role="Invoices" EntitySet="Invoices" />
+      <End Role="Nairas" EntitySet="Nairas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Nairas_ServiceEnteries" Association="Self.FK_Nairas_ServiceEnteries">
+      <End Role="ServiceEnteries" EntitySet="ServiceEnteries" />
+      <End Role="Nairas" EntitySet="Nairas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reports_Clients" Association="Self.FK_Reports_Clients">
+      <End Role="Clients" EntitySet="Clients" />
+      <End Role="Reports" EntitySet="Reports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reports_Invoices" Association="Self.FK_Reports_Invoices">
+      <End Role="Invoices" EntitySet="Invoices" />
+      <End Role="Reports" EntitySet="Reports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reports_ServiceEnteries" Association="Self.FK_Reports_ServiceEnteries">
+      <End Role="ServiceEnteries" EntitySet="ServiceEnteries" />
+      <End Role="Reports" EntitySet="Reports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceEnteries_Clients" Association="Self.FK_ServiceEnteries_Clients">
+      <End Role="Clients" EntitySet="Clients" />
+      <End Role="ServiceEnteries" EntitySet="ServiceEnteries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceEnteries_Invoices" Association="Self.FK_ServiceEnteries_Invoices">
+      <End Role="Invoices" EntitySet="Invoices" />
+      <End Role="ServiceEnteries" EntitySet="ServiceEnteries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Staffs_Roles" Association="Self.FK_Staffs_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Staffs" EntitySet="Staffs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

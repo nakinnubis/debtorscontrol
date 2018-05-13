@@ -1,0 +1,139 @@
+﻿@model DebtorsControl.ViewModel.DollarInvoice
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit Dollar Invoice</h2>
+
+<div class="container-fluid">
+    <div class="row">
+        @using (Html.BeginForm())
+        {
+            <p class="text-danger">@ViewBag.Success</p>
+            <p class="text-danger">@ViewBag.Error</p>
+            <div class="col-md-10 col-md-offset-1">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        @*@Html.EditorFor(model => model.ClientName, new { htmlAttributes = new { @class = "form-control", value = $"{Model.ClientName}"} })*@
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label class="control-label col-sm-12"><h3 class="text-center">Client Name</h3></label>
+                            </div>
+                            <br />
+                            @Html.EditorFor(model => model.ClientName, new { htmlAttributes = new { @class = "form-control col-md-6", value = $"{Model.ClientName}" } })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            <label class="control-label col-sm-12"><h3 class="text-center">Invoice Number</h3></label>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label col-sm-12"><h3 class="text-center">Service Entry Number</h3></label>
+                        </div>
+                        <br />
+                        <div class="col-md-6">
+                            @Html.EditorFor(model => model.InvoiceNumber, new { htmlAttributes = new { @class = "form-control col-md-12", value = $"{Model.InvoiceNumber}" } })
+                        </div>
+                        <div class="col-md-6">
+                            @Html.EditorFor(model => model.SeNumber, new { htmlAttributes = new { @class = "form-control col-md-12", value = $"{Model.SeNumber}" } })
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            <label class="control-label col-sm-12"><h3 class="text-center">Date</h3></label>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label col-sm-12"><h3 class="text-center">Amount</h3></label>
+                        </div>
+                        <br />
+                        <div class="col-md-6">
+                            @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control", value = $"{Model.Date:DD-MM-YYYY}", @type = "date" } })
+                        </div>
+                        <div class="col-md-6">
+                            @*@Html.EditorFor(model => model.Amount, new { htmlAttributes = new { disable = true } }, new { @class = "form-control", value = $"{Model.Amount}" })*@
+                            @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control", value = $"{Model.Amount}" } })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            <label class="control-label col-sm-12"><h3 class="text-center">Amount Paid</h3></label>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label col-sm-12"><h3 class="text-center">VAT</h3></label>
+                        </div>
+                        <br />
+                        <div class="col-md-6">
+                            @Html.EditorFor(model => model.AmountPaid, new { htmlAttributes = new { @class = "form-control", value = $"{Model.AmountPaid}" } })
+                        </div>
+                        <div class="col-md-6">
+                            @*@Html.EditorFor(model => model.Amount, new { htmlAttributes = new { disable = true } }, new { @class = "form-control", value = $"{Model.Amount}" })*@
+                            @Html.EditorFor(model => model.Vat, new { htmlAttributes = new { @class = "form-control", value = $"{Model.Vat}" } })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            <label class="control-label col-sm-12"><h3 class="text-center">Total Invoiced</h3></label>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label col-sm-12"><h3 class="text-center">Payable</h3></label>
+                        </div>
+                        <br />
+                        <div class="col-md-6">
+                            @Html.EditorFor(model => model.TotalInvoice, new { htmlAttributes = new { @class = "form-control", value = $"{Model.TotalInvoice}" } })
+                        </div>
+                        <div class="col-md-6">
+                            @*@Html.EditorFor(model => model.Amount, new { htmlAttributes = new { disable = true } }, new { @class = "form-control", value = $"{Model.Amount}" })*@
+                            @Html.EditorFor(model => model.Payable, new { htmlAttributes = new { @class = "form-control", value = $"{Model.Payable}" } })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            <label class="control-label col-sm-12"><h3 class="text-center">LCD Charge</h3></label>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label col-sm-12"><h3 class="text-center">Outstanding</h3></label>
+                        </div>
+                        <br />
+                        <div class="col-md-6">
+                            @Html.EditorFor(model => model.LcdCharge, new { htmlAttributes = new { @class = "form-control", value = $"{Model.LcdCharge}" } })
+                        </div>
+                        <div class="col-md-6">
+                            @*@Html.EditorFor(model => model.Amount, new { htmlAttributes = new { disable = true } }, new { @class = "form-control", value = $"{Model.Amount}" })*@
+                            @Html.EditorFor(model => model.Outstanding, new { htmlAttributes = new { @class = "form-control", value = $"{Model.Outstanding}" } })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            <label class="control-label col-sm-12"><h3 class="text-center">Date Submitted</h3></label>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label col-sm-12"><h3 class="text-center">Due Date</h3></label>
+                        </div>
+                        <br />
+                        <div class="col-md-6">
+                            @Html.EditorFor(model => model.DateSubmitted, new { htmlAttributes = new { @class = "form-control", value = $"{Model.DateSubmitted:MM/dd/yyyy}", @type = "date" } })
+                        </div>
+                        <div class="col-md-6">
+                            @*@Html.EditorFor(model => model.Amount, new { htmlAttributes = new { disable = true } }, new { @class = "form-control", value = $"{Model.Amount}" })*@
+                            @Html.EditorFor(model => model.DueDate, new { htmlAttributes = new { @class = "form-control", value = $"{Model.DueDate:DD-MM-YYYY}", @type = "date" } })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-4 col-md-offset-4"><input type="submit" class="btn btn-block btn-danger" name="submit" value="Submit Edit" /></div>
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+
+</div>
+
+
+<script>
+
+
+
+</script>

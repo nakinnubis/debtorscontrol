@@ -1,0 +1,39 @@
+﻿@model DebtorsControl.ViewModel.ActivityViewModel
+
+@{
+    ViewBag.Title = "Staff Activity Log";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <table id="activity" class="table table-striped list-group-item">
+                <thead>
+                <tr>
+                    <th>Staff Name</th>
+                    <th>Activity Type</th>
+                    <th>Time Stamp </th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var activity in Model.Activities.Take(10))
+                {
+                    <tr>
+                        <td>@activity.StaffName</td>
+                        <td>@activity.ActivityType</td>
+                        <td>@activity.TimeCreated</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+            <div class="form-group">
+                @using (Html.BeginForm("ActivityDownload", "Debtors", FormMethod.Post))
+                {
+                    <input type="submit" class="btn btn-danger" value="download" name="submit"/>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>

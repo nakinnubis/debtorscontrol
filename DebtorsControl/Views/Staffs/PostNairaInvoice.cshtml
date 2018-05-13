@@ -1,0 +1,172 @@
+﻿@model DebtorsControl.ViewModel.ClientsViewModel
+@{
+    ViewBag.Title = "Post Naira Invoice";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Post Naira Invoice</h2>
+@using (Html.BeginForm("PostNaira", "Debtors", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="form-horizontal">
+                    <h4>Naira</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            @Html.DropDownListFor(model => model.GetClients, new SelectList(Model.GetClients, "ClientName", "ClientName"), new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.GetClients, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <input type="date" class="form-control" name="year" placeholder="Year" required />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <select class="form-control" name="invoicenumber" id="invoicenumber"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <select class="form-control" name="servicenumber" id="servicenumber"></select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control" name="FxRate" placeholder="Fx rate" id="FxRate" required />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control" name="Amount" placeholder="Amount" id="Amount" required />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control" name="Vat" placeholder="VAT" id="Vat" required />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control" name="TotalInvoice" placeholder="TotalInvoice" id="TotalInvoice" required />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control" name="Payable" placeholder="Payable" id="Payable" required />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control" name="LcdCharge" placeholder="LcdCharge" id="LcdCharge" required />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control" name="AmountPaid" placeholder="Amount Paid" id="AmountPaid" required />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control" name="Outstanding" placeholder="Outstanding" id="Outstanding" required />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="col-md-2">
+                                    <label class="label">Date Submitted</label>
+                                </div>
+                                <div class="col-md-10">
+                                    <input type="date" class="form-control" name="DateSubmitted" placeholder="DateSubmitted" id="DateSubmitted" required />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="col-md-2">
+                                    <label class="label">Due Date</label>
+                                </div>
+                                <div class="col-md-10">
+                                    <input type="date" class="form-control" name="DueDate" placeholder="DueDate" id="DueDate" required />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control" name="WithHoldingTax" placeholder="WithHoldingTax" id="WithHoldingTax" required />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <input type="file" class="form-control" name="file" placeholder="RemittanceAdvise" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <textarea rows="5" cols="50" name="comments" placeholder="Enter Comments" autofocus="" style="width: 100%;
+                                  "></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Create" class="btn btn-primary" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}

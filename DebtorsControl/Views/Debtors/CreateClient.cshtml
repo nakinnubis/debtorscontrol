@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "Create Client";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            @using (Html.BeginForm("CreateClient", "Debtors", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <div class="panel panel-danger">
+                    <div class="panel-heading">
+                        <h2 class="text-center">Create Clients</h2>
+                        <p class="text-success">@ViewBag.Success</p>
+                        <p class="text-danger">@ViewBag.Client</p>
+                        <p class="text-danger">@ViewBag.Problem</p>
+                        <p class="text-danger" id="errorname">@ViewBag.Matching</p>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label for="" class="text-black">
+                                        Enter Client Name
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" name="ClientName" placeholder="Enter clientname" class="form-control" id="clientname1" required />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label for="" class="text-black">
+                                        Upload Client Logo
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="file" name="clientlogo" class="form-control" id="clientlogo" required />
+                                </div>
+                            </div>
+                            <input type="submit" class="btn btn-danger" value="Create Client" />
+                        </div>
+
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+<script>
+    function CheckClientName() {
+        var clientname1 = document.getElementById("clientname1").value;
+        var clientname2 = document.getElementById("clientname2").value;
+        if (clientname1 !== clientname2) {
+            document.getElementById("errorname").InnerHtml = "the name do not match";
+        }
+    }
+
+    CheckClientName();
+</script>
