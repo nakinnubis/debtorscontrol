@@ -14,12 +14,6 @@ namespace DebtorsControl.Models
     
     public partial class ServiceEntery
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ServiceEntery()
-        {
-            this.Reports = new HashSet<Report>();
-        }
-    
         public long Id { get; set; }
         public string SENumber { get; set; }
         public string InvoiceNumber { get; set; }
@@ -27,7 +21,5 @@ namespace DebtorsControl.Models
     
         public virtual Client Client { get; set; }
         public virtual Invoice Invoice { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Report> Reports { get; set; }
     }
 }

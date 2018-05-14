@@ -28,6 +28,7 @@
     </NuGetPackageImportStamp>
     <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
     <TargetFrameworkProfile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -507,13 +508,6 @@
     <Content Include="Scripts\esm\popper.js.map" />
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
     <Content Include="Scripts\esm\popper-utils.js.map" />
-    <EntityDeploy Include="Models\DebtorsModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DebtorsModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\DebtorsModel.edmx.diagram">
-      <DependentUpon>DebtorsModel.edmx</DependentUpon>
-    </Content>
     <Content Include="Scripts\bootstrap.min.js.map" />
     <Content Include="Scripts\bootstrap.js.map" />
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
@@ -525,6 +519,13 @@
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="App_Browsers\qt.browser" />
+    <EntityDeploy Include="Models\DebtorsModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DebtorsModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\DebtorsModel.edmx.diagram">
+      <DependentUpon>DebtorsModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -3423,6 +3424,7 @@
     <Content Include="vendors\validator\index.html" />
     <Content Include="vendors\validator\multifield.js" />
     <Content Include="vendors\validator\validator.js" />
+    <Content Include="Views\backupupload.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -4153,7 +4155,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>49999</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:49999/</IISUrl>
+          <IISUrl>http://localhost:56999/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

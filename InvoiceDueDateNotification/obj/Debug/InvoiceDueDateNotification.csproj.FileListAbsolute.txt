@@ -14,3 +14,15 @@ C:\inetpub\wwwroot\DebtorsControl\InvoiceDueDateNotification\bin\Debug\EntityFra
 C:\inetpub\wwwroot\DebtorsControl\InvoiceDueDateNotification\bin\Debug\EntityFramework.xml
 C:\inetpub\wwwroot\DebtorsControl\InvoiceDueDateNotification\bin\Debug\EntityFramework.SqlServer.xml
 C:\inetpub\wwwroot\DebtorsControl\InvoiceDueDateNotification\obj\Debug\InvoiceDueDateNotification.csprojResolveAssemblyReference.cache
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\debtorscontrol\InvoiceDueDateNotification\bin\Debug\InvoiceDueDateNotification.exe.config
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\debtorscontrol\InvoiceDueDateNotification\bin\Debug\InvoiceDueDateNotification.exe
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\debtorscontrol\InvoiceDueDateNotification\bin\Debug\InvoiceDueDateNotification.pdb
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\debtorscontrol\InvoiceDueDateNotification\bin\Debug\EntityFramework.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\debtorscontrol\InvoiceDueDateNotification\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\debtorscontrol\InvoiceDueDateNotification\bin\Debug\EntityFramework.xml
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\debtorscontrol\InvoiceDueDateNotification\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\debtorscontrol\InvoiceDueDateNotification\obj\Debug\InvoiceDueDateNotification.csprojAssemblyReference.cache
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\debtorscontrol\InvoiceDueDateNotification\obj\Debug\InvoiceDueDateNotification.csproj.CoreCompileInputs.cache
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\debtorscontrol\InvoiceDueDateNotification\obj\Debug\InvoiceDueDateNotification.csproj.CopyComplete
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\debtorscontrol\InvoiceDueDateNotification\obj\Debug\InvoiceDueDateNotification.exe
+C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\debtorscontrol\InvoiceDueDateNotification\obj\Debug\InvoiceDueDateNotification.pdb

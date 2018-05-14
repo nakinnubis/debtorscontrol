@@ -6,12 +6,11 @@ using System.Web;
 namespace DebtorsControl.ViewModel
 {
     public class InvoiceExport
-    {
+    {  public string Date { get; set; }
         public string InvoiceType { get; set; }
         public string ClientName { get; set; }
-        public int? Year { get; set; }
-        public int? Month { get; set; }
-        public string Date { get; set; }
+        //public int? Year { get; set; }
+        //public int? Month { get; set; }      
         public string InvoiceNumber { get; set; }
         public string SeNumber { get; set; }
         public decimal? FxRate { get; set; }
@@ -19,6 +18,7 @@ namespace DebtorsControl.ViewModel
         public decimal Vat { get; set; }
         public decimal TotalInvoice { get; set; }
         public decimal Payable { get; set; }
+        public decimal? NairaEquiv { get; set; }
         public decimal LcdCharge { get; set; }
         public decimal AmountPaid { get; set; }
         public decimal Outstanding { get; set; }
@@ -27,6 +27,6 @@ namespace DebtorsControl.ViewModel
         public decimal WithHoldingTax { get; set; }
         public string RemittanceAdvise { get; set; }
         public string Comments { get; set; }
-        public decimal? NairaEquiv { get; set; }
+       
     }
 }

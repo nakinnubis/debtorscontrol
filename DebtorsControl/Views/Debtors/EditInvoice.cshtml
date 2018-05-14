@@ -71,23 +71,23 @@
                     <tbody>
                         @foreach (var naira in Model.NairaInvoices)
                                 {
-                                <tr class="">
-                                    <td>@DateTime.Parse(naira.Date).ToString("dd-MMM")</td>
-                                    <td>@naira.InvoiceNumber</td>
-                                    <td>@naira.SeNumber</td>
-                                    <td>@($"{naira.Vat:n0}")</td>
-                                    <td>@($"{naira.FxRate:n0}")</td>
-                                    <td>@($"{naira.TotalInvoice:n0}")</td>
-                                    <td>@($"{naira.Payable:n0}")</td>
-                                    <td>@($"{naira.LcdCharge:n0}")</td>
-                                    <td>@($"{naira.AmountPaid:n0}")</td>
-                                    <td>@naira.DateSubmitted.ToString("dd-MMM-yyyy")</td>
-                                    <td>@naira.DueDate.ToString("dd-MMM-yyyy")</td>
-                                    <td>@naira.DueDate.ToString("dd-MMM-yyyy")</td>
-                                    <td>@($"{naira.Amount:n0}")</td>
-                                    <td>@Html.ActionLink("Edit", "EditNaira", new { invoicenum = naira.InvoiceNumber, servicenum = naira.SeNumber }, new { @class = "btn btn-primary" })</td>
-                                    <td>@Html.ActionLink("Delete", "DeleteNaira", new { invoicenum = naira.InvoiceNumber, servicenum = naira.SeNumber }, new { @class = "btn btn-danger" })</td>
-                                </tr>
+                        <tr class="">
+                            <td>@naira.DateSubmitted.ToString("dd-MMM-yyyy")</td>
+                            <td>@naira.InvoiceNumber</td>
+                            <td>@naira.SeNumber</td>
+                            <td>@($"{naira.Vat:n0}")</td>
+                            <td>@($"{naira.FxRate:n0}")</td>
+                            <td>@($"{naira.TotalInvoice:n0}")</td>
+                            <td>@($"{naira.Payable:n0}")</td>
+                            <td>@($"{naira.LcdCharge:n0}")</td>
+                            <td>@($"{naira.AmountPaid:n0}")</td>
+                            <td>@naira.DateSubmitted.ToString("dd-MMM-yyyy")</td>
+                            <td>@naira.DueDate.ToString("dd-MMM-yyyy")</td>
+                            <td>@naira.DueDate.ToString("dd-MMM-yyyy")</td>
+                            <td>@($"{naira.Amount:n0}")</td>
+                            <td>@Html.ActionLink("Edit", "EditNaira", new { invoicenum = naira.InvoiceNumber, servicenum = naira.SeNumber }, new { @class = "btn btn-primary" })</td>
+                            <td>@Html.ActionLink("Delete", "DeleteNaira", new { invoicenum = naira.InvoiceNumber, servicenum = naira.SeNumber }, new { @class = "btn btn-danger" })</td>
+                        </tr>
                                 }
                     </tbody>
                 </table>
@@ -130,22 +130,22 @@
                     <tbody>
                         @foreach (var dola in Model.DollarInvoices)
                                 {
-                                <tr>
-                                    <td>@DateTime.Parse(dola.Date).ToString("dd-MMM")</td>
-                                    <td>@dola.InvoiceNumber</td>
-                                    <td>@dola.SeNumber</td>
-                                    <td>@($"{dola.Vat:n0}")</td>
-                                    <td>@($"{dola.TotalInvoice:n0}")</td>
-                                    <td>@($"{dola.Payable:n0}")</td>
-                                    <td>@($"{dola.LcdCharge:n0}")</td>
-                                    <td>@($"{dola.AmountPaid:n0}")</td>
-                                    <td>@dola.DateSubmitted.ToString("dd-MMM-yyyy")</td>
-                                    <td>@dola.DueDate.ToString("dd-MMM-yyyy")</td>
-                                    <td>@dola.DatePaid.ToString("dd-MMM-yyyy")</td>
-                                    <td>@($"{dola.Amount:n0}")</td>
-                                    <td>@Html.ActionLink("Edit", "Edit", new { invoicenum = dola.InvoiceNumber, servicenum = dola.SeNumber }, new { @class = "btn btn-primary" })</td>
-                                    <td>@Html.ActionLink("Delete", "DeleteDollar", new { invoicenum = dola.InvoiceNumber, servicenum = dola.SeNumber }, new { @class = "btn btn-danger" })</td>
-                                </tr>
+                        <tr>
+                            <td>@dola.DateSubmitted.ToString("dd-MMM-yyyy")</td>
+                            <td>@dola.InvoiceNumber</td>
+                            <td>@dola.SeNumber</td>
+                            <td>@($"{dola.Vat:n0}")</td>
+                            <td>@($"{dola.TotalInvoice:n0}")</td>
+                            <td>@($"{dola.Payable:n0}")</td>
+                            <td>@($"{dola.LcdCharge:n0}")</td>
+                            <td>@($"{dola.AmountPaid:n0}")</td>
+                            <td>@dola.DateSubmitted.ToString("dd-MMM-yyyy")</td>
+                            <td>@dola.DueDate.ToString("dd-MMM-yyyy")</td>
+                            <td>@dola.DatePaid.ToString("dd-MMM-yyyy")</td>
+                            <td>@($"{dola.Amount:n0}")</td>
+                            <td>@Html.ActionLink("Edit", "Edit", new { invoicenum = dola.InvoiceNumber, servicenum = dola.SeNumber }, new { @class = "btn btn-primary" })</td>
+                            <td>@Html.ActionLink("Delete", "DeleteDollar", new { invoicenum = dola.InvoiceNumber, servicenum = dola.SeNumber }, new { @class = "btn btn-danger" })</td>
+                        </tr>
 
                                 }
                     </tbody>

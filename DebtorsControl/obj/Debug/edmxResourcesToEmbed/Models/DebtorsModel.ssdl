@@ -102,10 +102,10 @@
   </EntityType>
   <EntityType Name="ServiceEnteries">
     <Key>
-      <PropertyRef Name="SENumber" />
+      <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="SENumber" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="SENumber" Type="nvarchar" MaxLength="256" />
     <Property Name="InvoiceNumber" Type="nvarchar" MaxLength="256" Nullable="false" />
     <Property Name="ClientName" Type="nvarchar" MaxLength="400" Nullable="false" />
   </EntityType>
@@ -203,18 +203,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Reports_ServiceEnteries">
-    <End Role="ServiceEnteries" Type="Self.ServiceEnteries" Multiplicity="1" />
-    <End Role="Reports" Type="Self.Reports" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ServiceEnteries">
-        <PropertyRef Name="SENumber" />
-      </Principal>
-      <Dependent Role="Reports">
-        <PropertyRef Name="SENumber" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_ServiceEnteries_Clients">
     <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
     <End Role="ServiceEnteries" Type="Self.ServiceEnteries" Multiplicity="*" />
@@ -287,10 +275,6 @@
     </AssociationSet>
     <AssociationSet Name="FK_Reports_Invoices" Association="Self.FK_Reports_Invoices">
       <End Role="Invoices" EntitySet="Invoices" />
-      <End Role="Reports" EntitySet="Reports" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Reports_ServiceEnteries" Association="Self.FK_Reports_ServiceEnteries">
-      <End Role="ServiceEnteries" EntitySet="ServiceEnteries" />
       <End Role="Reports" EntitySet="Reports" />
     </AssociationSet>
     <AssociationSet Name="FK_ServiceEnteries_Clients" Association="Self.FK_ServiceEnteries_Clients">

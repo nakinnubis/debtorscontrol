@@ -648,7 +648,7 @@ namespace DebtorsControl.Controllers
                         TempData["Client"] = "Logo format not supported!";
                         return RedirectToAction("CreateClient");
                     }
-                    
+
                     var imgpath = "../img/clientlogo/" + clientlogo.FileName;
                     clientlogo.SaveAs(Server.MapPath(imgpath));
                     var clientname = form["ClientName"];
@@ -664,7 +664,7 @@ namespace DebtorsControl.Controllers
                     {
                         ClientName = clientname,
                         ClientCode = clientcode,
-                        ClientLogo = "img/clientlogo/"+clientlogo.FileName
+                        ClientLogo = "img/clientlogo/" + clientlogo.FileName
 
                     };
                     try
@@ -888,13 +888,13 @@ namespace DebtorsControl.Controllers
 
         public List<NairaInvoice> GetNairaInvoices(pdInvoiceEntities db, int year, string client)
         {
-            var naira = db.Nairas.Where(c => c.Year.Equals(year) && c.ClientName.Equals(client)).OrderBy(c => c.Month).ToList();
+            var naira = db.Nairas.Where(c => c.DateSubmitted.Year.Equals(year) && c.ClientName.Equals(client)).OrderBy(c => c.Month).ToList();
             var nairainvoice = new List<NairaInvoice>();
             foreach (var n in naira)
             {
                 var nairapart = new NairaInvoice
                 {
-                    Date = $"{n.Month}/{n.Year}",
+                    Date = $"{n.DateSubmitted.Month}/{n.Year}",
                     InvoiceNumber = n.InvoiceNumber,
                     SeNumber = n.SENumber,
                     FxRate = n.FxRate,
@@ -903,10 +903,11 @@ namespace DebtorsControl.Controllers
                     TotalInvoice = n.TotalInvoice,
                     Payable = n.Payable,
                     AmountPaid = n.AmountPaid,
+                    NairaValue = n.NairaValue,
                     LcdCharge = n.LcdCharge,
                     Outstanding = n.Outstanding,
                     DateSubmitted = n.DateSubmitted,
-                    DatePaid =n.DatePaid,
+                    DatePaid = n.DatePaid,
                     DueDate = n.DueDate,
                     Comments = n.Comments
                 };
@@ -917,13 +918,13 @@ namespace DebtorsControl.Controllers
         }
         public List<DollarInvoice> GetDollarInvoices(pdInvoiceEntities db, int year, string client)
         {
-            var dollar = db.Dollars.Where(c => c.Year.Equals(year) && c.ClientName.Equals(client)).OrderBy(c => c.Month).ToList();
+            var dollar = db.Dollars.Where(c => c.DateSubmitted.Year.Equals(year) && c.ClientName.Equals(client)).OrderBy(c => c.DateSubmitted.Month).ToList();
             var dollarinvoice = new List<DollarInvoice>();
             foreach (var n in dollar)
             {
                 var nairapart = new DollarInvoice
                 {
-                    Date = $"{n.Month}/{n.Year}",
+                    Date = $"{n.DateSubmitted.Month}/{n.Year}",
                     InvoiceNumber = n.InvoiceNumber,
                     SeNumber = n.SENumber,
                     Amount = n.Amount,
@@ -963,7 +964,7 @@ namespace DebtorsControl.Controllers
             Response.ClearContent();
             Response.Buffer = true;
             Response.AddHeader("content-disposition",
-                "attachment; filename=export.xls");
+                "attachment; filename=export.xlsx");
             Response.ContentType = "application/ms-excel";
             Response.Charset = "";
             StringWriter objStringWriter = new StringWriter();
@@ -1012,9 +1013,9 @@ namespace DebtorsControl.Controllers
                 var _year = int.Parse(year);
                 // long id = 0;
                 //  var dataList = new List<InvoiceExport>();
-                var naira = db.Nairas.Where(c => c.Year.Equals(_year) && c.ClientName.Equals(clientname))
+                var naira = db.Nairas.Where(c => c.DateSubmitted.Year.Equals(_year) && c.ClientName.Equals(clientname))
                     .AsEnumerable();
-                var dollar = db.Dollars.Where(c => c.Year.Equals(_year) && c.ClientName.Equals(clientname))
+                var dollar = db.Dollars.Where(c => c.DateSubmitted.Year.Equals(_year) && c.ClientName.Equals(clientname))
                     .AsEnumerable();
                 // IEnumerable<dynamic> ds = dynamicDataType.AsEnumerable();
                 //var clientdata = ds as dynamic[] ?? ds.ToArray();
@@ -1030,11 +1031,9 @@ namespace DebtorsControl.Controllers
             {
                 var export = new InvoiceExport
                 {
+                    Date = $"{nair.DateSubmitted.Month}/{nair.DateSubmitted.Year}",
                     InvoiceType = "Naira",
                     ClientName = nair.ClientName,
-                    Year = nair.Year,
-                    Month = nair.Month,
-                    Date = $"{nair.Month}/{nair.Year}",
                     InvoiceNumber = nair.InvoiceNumber,
                     SeNumber = nair.SENumber,
                     FxRate = nair.FxRate,
@@ -1042,6 +1041,7 @@ namespace DebtorsControl.Controllers
                     Vat = nair.VAT,
                     TotalInvoice = nair.TotalInvoice,
                     Payable = nair.Payable,
+                    NairaEquiv = nair.NairaValue,
                     LcdCharge = nair.LcdCharge,
                     AmountPaid = nair.AmountPaid,
                     Outstanding = nair.Outstanding,
@@ -1049,7 +1049,6 @@ namespace DebtorsControl.Controllers
                     DueDate = nair.DueDate.ToString("dd-MMMM-yyyy"),
                     WithHoldingTax = nair.WithHoldingTax,
                     Comments = nair.Comments,
-                    NairaEquiv = nair.NairaValue
                 };
                 invoiceexport.Add(export);
             }
@@ -1058,11 +1057,9 @@ namespace DebtorsControl.Controllers
             {
                 var export = new InvoiceExport
                 {
+                    Date = $"{nair.DateSubmitted.Month}/{nair.DateSubmitted.Year}",
                     InvoiceType = "Dollar",
                     ClientName = nair.ClientName,
-                    Year = nair.Year,
-                    Month = nair.Month,
-                    Date = $"{nair.Month}/{nair.Year}",
                     InvoiceNumber = nair.InvoiceNumber,
                     SeNumber = nair.SENumber,
                     FxRate = (decimal)0.00000,
@@ -1160,7 +1157,7 @@ namespace DebtorsControl.Controllers
                         new NairaInvoice
                         {
                             ClientName = c.ClientName,
-                            Year = c.Year,
+                            //Year = c.Year,
                             InvoiceNumber = c.InvoiceNumber,
                             SeNumber = c.SENumber,
                             Amount = c.Amount,
@@ -1312,7 +1309,7 @@ namespace DebtorsControl.Controllers
                         file.SaveAs(path);
                         var excelnew = new ExcelQueryFactory(path);
                         var clientnameuupload = (excelnew.Worksheet()
-                            .Select(e => new ExcelClientUpload { ClientName = e["ClientName"], ClientCode = e["ClientCode"] }));
+                            .Select(e => new ExcelClientUpload { ClientName = e["ClientName"], ClientCode = e["ClientName"] }));
 
                         var client = clientnameuupload
                             .Select(c => new Client { ClientName = c.ClientName, ClientCode = c.ClientCode })
@@ -1351,7 +1348,7 @@ namespace DebtorsControl.Controllers
                         new NairaInvoice
                         {
                             ClientName = c.ClientName,
-                            Year = c.Year,
+                            //Year = c.Year,
                             InvoiceNumber = c.InvoiceNumber,
                             SeNumber = c.SENumber,
                             Amount = c.Amount,
@@ -1504,24 +1501,26 @@ namespace DebtorsControl.Controllers
                     if (extension == null || !extension.Equals(".xlsx")) return RedirectToAction("UploadInvoices");
                     using (var reader = new BinaryReader(file.InputStream))
                     {
-                        var filecontent = reader.BaseStream;
-                        var excel1 = new ExcelPackage(filecontent);
-                        var t = excel1.ToDataTable();
-                        var excel = new ExcelPackage(file.InputStream);
-                        string path = Server.MapPath("~/InvoiceUpload/" + file.FileName);
-                        file.SaveAs(path);
-                        var excelnew = new ExcelQueryFactory(path);
-                        var invoicetype = form["invoicetype"].ToString();
-                        if (invoicetype.Equals("Naira"))
+                        if (ModelState.IsValid)
                         {
-                          //  decimal fxzero = 0;
+                            var filecontent = reader.BaseStream;
+                            var excel1 = new ExcelPackage(filecontent);
+                            var t = excel1.ToDataTable();
+                            var excel = new ExcelPackage(file.InputStream);
+                            string path = Server.MapPath("~/InvoiceUpload/" + file.FileName);
+                            file.SaveAs(path);
+                            var excelnew = new ExcelQueryFactory(path);
+                            //var invoicetype = form["invoicetype"].ToString();
+                            SaveInvoiceServiceEntry(db, excelnew, "Invoices");
+
+                            //  decimal fxzero = 0;
                             var invoiceupload = excelnew.Worksheet("Naira")
                                 .Select(e => new NairaInvoice
                                 {
                                     ClientName = e["ClientName"],
-                                    //Year = int.Parse(e["Year"]),
-                                    // Month = int.Parse(e["Month"]),decimal.Parse(e["FxRate"])
-                                    InvoiceNumber = e["InvoiceNumber"],
+                                //Year = int.Parse(e["Year"]),
+                                // Month = int.Parse(e["Month"]),decimal.Parse(e["FxRate"])
+                                InvoiceNumber = e["InvoiceNumber"],
                                     SeNumber = e["SENumber"],
                                     FxRate = decimal.Parse(e["FxRate"] == null || e["FxRate"].ToString() == String.Empty ? "0" : e["FxRate"].ToString()),
                                     Amount = decimal.Parse(e["Amount"] == null || e["Amount"].ToString() == String.Empty ? "0" : e["Amount"].ToString()),
@@ -1543,12 +1542,12 @@ namespace DebtorsControl.Controllers
                                 .Select(c => new Naira
                                 {
                                     ClientName = c.ClientName,
-                                    //Year = (int)c.Year,
-                                   // Month = c.Month,
-                                    InvoiceNumber = c.InvoiceNumber,
+                                //Year = (int)c.Year,
+                                // Month = c.Month,
+                                InvoiceNumber = c.InvoiceNumber,
                                     SENumber = c.SeNumber,
-                                 //   FxRate = c.FxRate,
-                                    Amount = c.Amount,
+                                //   FxRate = c.FxRate,
+                                Amount = c.Amount,
                                     VAT = c.Vat,
                                     TotalInvoice = c.TotalInvoice,
                                     Payable = c.Payable,
@@ -1564,29 +1563,14 @@ namespace DebtorsControl.Controllers
                                 })
                                 .AsEnumerable();
                             db.Nairas.AddRange(invoicen);
-                            var dated = DateTime.UtcNow;
-                            var span = dated.TimeOfDay;
-                            var activitybyStaff = $"uploaded invoices information associated with naira invoice @ {dated} and timespan {span}";
-                            var activityLog = new ActivityLog
-                            {
-                                Staffinfo = Session["AdminFullname"].ToString(),
-                                TypeofActivity = activitybyStaff
-                            };
-                            db.ActivityLogs.AddOrUpdate(activityLog);
-                            db.SaveChanges();
-                            TempData["Message"] = "Invoice upload was successfully. Thank you";
-                            return RedirectToAction("UploadInvoices");
-                        }
+                            var invoiceuploadd = excelnew.Worksheet("Dollar")
 
-                        if (invoicetype.Equals("Dollar"))
-                        {
-                            var invoiceupload = excelnew.Worksheet("Dollar")
                                 .Select(e => new DollarInvoice
                                 {
                                     ClientName = e["ClientName"],
-                                 //   Year = int.Parse(e["Year"]),
-                                  //  Month = int.Parse(e["Month"]),
-                                    InvoiceNumber = e["InvoiceNumber"],
+                                //   Year = int.Parse(e["Year"]),
+                                //  Month = int.Parse(e["Month"]),
+                                InvoiceNumber = e["InvoiceNumber"],
                                     SeNumber = e["SENumber"],
                                     Amount = decimal.Parse(e["Amount"]),
                                     Vat = decimal.Parse(e["VAT"]),
@@ -1598,17 +1582,17 @@ namespace DebtorsControl.Controllers
                                     DateSubmitted = DateTime.Parse(e["DateSubmitted"]),
                                     DueDate = DateTime.Parse(e["DueDate"]),
                                     DatePaid = DateTime.Parse(e["DatePaid"]),
-                                    WithHoldinTax = decimal.Parse(e["WithHoldingTax"]),
+                                    WithHoldinTax = decimal.Parse(e["WithHoldinTax"]),
                                     Comments = e["Comments"]
                                 });
 
-                            var invoicen = invoiceupload
+                            var invoiced = invoiceuploadd
                                 .Select(c => new Dollar
                                 {
                                     ClientName = c.ClientName,
-                                  //  Year = (int)c.Year,
-                                   // Month = c.Month,
-                                    InvoiceNumber = c.InvoiceNumber,
+                                //  Year = (int)c.Year,
+                                // Month = c.Month,
+                                InvoiceNumber = c.InvoiceNumber,
                                     SENumber = c.SeNumber,
                                     Amount = c.Amount,
                                     VAT = c.Vat,
@@ -1624,10 +1608,11 @@ namespace DebtorsControl.Controllers
                                     Comments = c.Comments
                                 })
                                 .AsEnumerable();
-                            db.Dollars.AddRange(invoicen);
+                            db.Dollars.AddRange(invoiced);
+                            db.SaveChanges();
                             var dated = DateTime.UtcNow;
                             var span = dated.TimeOfDay;
-                            var activitybyStaff = $"uploaded invoices information associated with dollar invoice @ {dated} and timespan {span}";
+                            var activitybyStaff = $"uploaded invoices information associated with naira invoice @ {dated} and timespan {span}";
                             var activityLog = new ActivityLog
                             {
                                 Staffinfo = Session["AdminFullname"].ToString(),
@@ -1637,7 +1622,7 @@ namespace DebtorsControl.Controllers
                             db.SaveChanges();
                             TempData["Message"] = "Invoice upload was successfully. Thank you";
                             return RedirectToAction("UploadInvoices");
-                        }
+                        }     
                         TempData["Error"] = "Invalid Selection";
                         return RedirectToAction("UploadInvoices");
                     }
@@ -1672,30 +1657,7 @@ namespace DebtorsControl.Controllers
                         string path = Server.MapPath("~/InvoiceUpload/" + file.FileName);
                         file.SaveAs(path);
                         var excelnew = new ExcelQueryFactory(path);
-                        db.SaveChanges();
-                        var invoiceno = (excelnew.Worksheet("Invoices")
-                            .Select(e =>
-                                new InvoiceNumber { ClientName = e["ClientName"], InvoiceNo = e["InvoiceNumber"] }));
-                        var inv = invoiceno
-                            .Select(c => new Invoice { InvoiceNumber = c.InvoiceNo, ClientName = c.ClientName })
-                            .AsEnumerable();
-                        db.Invoices.AddRange(inv);
-                        db.SaveChanges();
-                        var seno = (excelnew.Worksheet("Invoices")
-                            .Select(e => new ServiceEntry
-                            {
-                                ClientName = e["ClientName"],
-                                InvoiceNo = e["InvoiceNumber"],
-                                SeNumber = e["SENumber"]
-                            }));
-                        var se = seno.Select(c => new ServiceEntery
-                        {
-                            SENumber = c.SeNumber,
-                            InvoiceNumber = c.InvoiceNo,
-                            ClientName = c.ClientName
-                        }).AsEnumerable();
-                        db.ServiceEnteries.AddRange(se);
-                        db.SaveChanges();
+                        SaveInvoiceServiceEntry(db, excelnew, "ServicesEntry");
                         TempData["SeInvoiceSaved"] = "SE and Invoices were successfully uploaded";
                         return RedirectToAction("UploadInvoices");
                     }
@@ -1706,6 +1668,49 @@ namespace DebtorsControl.Controllers
                     return RedirectToAction("UploadInvoices");
                 }
             }
+        }
+
+        private static void SaveInvoiceServiceEntry(pdInvoiceEntities db, ExcelQueryFactory excelnew, string sheetname)
+        {
+            var clientnameuupload = (excelnew.Worksheet("Clients")
+                              .Select(e => new ExcelClientUpload { ClientName = e["ClientName"], ClientCode = e["ClientName"] }));
+
+            var client = clientnameuupload
+                .Select(c => new Client { ClientName = c.ClientName, ClientCode = c.ClientCode })
+                .AsEnumerable();
+            db.Clients.AddRange(client);
+            db.SaveChanges();
+            var invoiceno = (excelnew.Worksheet(sheetname)
+                .Select(e =>
+                    new InvoiceNumber { ClientName = e["ClientName"], InvoiceNo = e["InvoiceNumber"] }));
+            var inv = invoiceno
+                .Select(c => new Invoice { InvoiceNumber = c.InvoiceNo, ClientName = c.ClientName })
+                .AsEnumerable();
+
+            foreach (var i in inv)
+            {
+                db.Invoices.AddOrUpdate(i);
+            }
+            db.SaveChanges();
+            var seno = (excelnew.Worksheet(sheetname)
+                .Select(e => new ServiceEntry
+                {
+                    ClientName = e["ClientName"],
+                    InvoiceNo = e["InvoiceNumber"],
+                    SeNumber = e["SENumber"] == String.Empty ? null : ""
+                }));
+            var se = seno.Select(c => new ServiceEntery
+            {
+                SENumber = c.SeNumber,
+                InvoiceNumber = c.InvoiceNo,
+                ClientName = c.ClientName
+            }).AsEnumerable();
+            foreach (var s in se)
+            {
+                db.ServiceEnteries.AddOrUpdate(s);
+            }
+
+            db.SaveChanges();
         }
 
         public ActionResult Reconcilation()
@@ -1722,12 +1727,12 @@ namespace DebtorsControl.Controllers
                 };
                 return View(monthlyAnalysisViewmModel);
             }
-          
+
         }
 
         private List<DollarInvoice> GetDollarInvoices(pdInvoiceEntities db)
         {
-            var dollarinvoice = db.Dollars.Select(c=> new DollarInvoice()).ToList();
+            var dollarinvoice = db.Dollars.Select(c => new DollarInvoice()).ToList();
             return dollarinvoice;
         }
 
@@ -1739,8 +1744,8 @@ namespace DebtorsControl.Controllers
             //var reconciled = db.Dollars.Select(c => new Reconcilation { ClientName = c.ClientName, DollarOutsnd = c.Outstanding }).ToList();
             //var rec = reconcilen.Concat(reconciled).ToList();
             var nairaval = db.Nairas.Select(c => new { c.ClientName, c.Outstanding }).ToList();
-            var dollarval = db.Dollars.Select(c=> new {c.ClientName, c.Outstanding}).ToList();
-       
+            var dollarval = db.Dollars.Select(c => new { c.ClientName, c.Outstanding }).ToList();
+
             var reci = new List<Reconcilation>();
             foreach (var c in GetClients().Where(k => k.ClientName != "Select Client"))
             {

@@ -8,7 +8,50 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="container-fluid">
+             
                 <div class="row">
+                    <div class="col-md-6">
+                        <div class="panel panel-default upload-panel panel-invoice-upload">
+                            <div class="panel-body">
+                                @using (Html.BeginForm("UploadInvoices", "Debtors", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                {<h2 class="text-center">Upload Previous Debtors Invoices Sheet</h2>
+
+                                    <p class="text-success">@ViewBag.Mes </p>
+                                    <p class="text-danger">@ViewBag.Error</p>
+                                    <p class="text-danger">@ViewBag.Exception</p>
+                                    <p class="text-danger">@ViewBag.Remarks</p>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <select name="invoicetype" id="" class="form-control">
+                                                    <option value="Select Invoice Type for upload">Select Invoice Type for upload</option>
+                                                    <option value="Naira">Naira</option>
+                                                    <option value="Dollar">Dollar</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-inline">
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <input type="file" class="form-control-file" name="file" id="file" />
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <input type="submit" class="btn btn-success" value="Upload Invoice" />
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+
+                                }
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-md-6">
                         <div class="panel panel-default upload-panel  panel-client-upload ">
                             <div class="panel-body">
@@ -36,97 +79,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-md-6">
-                        <div class="panel panel-default upload-panel panel-seinvoice-upload">
-                            <div class="panel-body">
-                                @using (Html.BeginForm("UploadServices", "Debtors", FormMethod.Post, new { enctype = "multipart/form-data" }))
-            {
-                                    <h2 class="text-center">Upload Invoices and Service Entry for Clients in database</h2>
-
-                                  <p class="text-danger">@ViewBag.SeInvoiceError</p>
-                                    <p class="text-danger">@ViewBag.SeInvoiceSaved</p>
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-8">
-                                                <select name="invoicetype" id="" class="form-control">
-                                                    @foreach (var d in Model.GetClients)
-                                                    {
-                                                        <option value="@d.ClientName">@d.ClientName</option>
-
-                                                    }
-
-
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-inline">
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-md-8">
-                                                    <input type="file" class="form-control-file" name="file" id="file" />
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <input type="submit" class="btn btn-success" value="Upload Invoice" />
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-
-                                }
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="panel panel-default upload-panel panel-invoice-upload">
-                            <div class="panel-body">
-                                @using (Html.BeginForm("UploadInvoices", "Debtors", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                                { <h2 class="text-center">Upload Previous Debtors Invoices Sheet</h2>
-
-                                <p class="text-success">@ViewBag.Mes </p>
-                                <p class="text-danger">@ViewBag.Error</p>
-                                <p class="text-danger">@ViewBag.Exception</p>
-                                <p class="text-danger">@ViewBag.Remarks</p>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-md-8">
-                                            <select name="invoicetype" id="" class="form-control">
-                                                <option value="Select Invoice Type for upload">Select Invoice Type for upload</option>
-                                                <option value="Naira">Naira</option>
-                                                <option value="Dollar">Dollar</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-inline">
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-8">
-                                                <input type="file" class="form-control-file" name="file" id="file" />
-                                            </div>
-                                            <div class="col-md-2">
-                                                <input type="submit" class="btn btn-success" value="Upload Invoice" />
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-
-
-
-                                }
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6"></div>
                 </div>
             </div>
           

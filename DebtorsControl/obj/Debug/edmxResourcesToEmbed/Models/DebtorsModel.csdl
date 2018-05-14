@@ -16,12 +16,12 @@
     <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ClientName" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="ClientCode" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ClientLogo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Dollars" Relationship="Self.FK_Dollars_Clients" FromRole="Clients" ToRole="Dollars" />
     <NavigationProperty Name="Invoices" Relationship="Self.FK_Invoices_Clients" FromRole="Clients" ToRole="Invoices" />
     <NavigationProperty Name="Nairas" Relationship="Self.FK_Nairas_Clients" FromRole="Clients" ToRole="Nairas" />
     <NavigationProperty Name="Reports" Relationship="Self.FK_Reports_Clients" FromRole="Clients" ToRole="Reports" />
     <NavigationProperty Name="ServiceEnteries" Relationship="Self.FK_ServiceEnteries_Clients" FromRole="Clients" ToRole="ServiceEnteries" />
-    <Property Name="ClientLogo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="Dollar">
     <Key>
@@ -86,9 +86,9 @@
     <Property Name="WithHoldingTax" Type="Decimal" Precision="18" Scale="5" Nullable="false" />
     <Property Name="RemittanceAdvise" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NairaValue" Type="Decimal" Precision="18" Scale="5" />
     <NavigationProperty Name="Client" Relationship="Self.FK_Nairas_Clients" FromRole="Nairas" ToRole="Clients" />
     <NavigationProperty Name="Invoice" Relationship="Self.FK_Nairas_Invoices" FromRole="Nairas" ToRole="Invoices" />
-    <Property Name="NairaValue" Type="Decimal" Precision="18" Scale="5" />
   </EntityType>
   <EntityType Name="Report">
     <Key>
@@ -108,7 +108,6 @@
     <Property Name="RemittanceAdviseStatus" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="Client" Relationship="Self.FK_Reports_Clients" FromRole="Reports" ToRole="Clients" />
     <NavigationProperty Name="Invoice" Relationship="Self.FK_Reports_Invoices" FromRole="Reports" ToRole="Invoices" />
-    <NavigationProperty Name="ServiceEntery" Relationship="Self.FK_Reports_ServiceEnteries" FromRole="Reports" ToRole="ServiceEnteries" />
   </EntityType>
   <EntityType Name="Role">
     <Key>
@@ -120,15 +119,14 @@
   </EntityType>
   <EntityType Name="ServiceEntery">
     <Key>
-      <PropertyRef Name="SENumber" />
+      <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="SENumber" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SENumber" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
     <Property Name="InvoiceNumber" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="ClientName" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Client" Relationship="Self.FK_ServiceEnteries_Clients" FromRole="ServiceEnteries" ToRole="Clients" />
     <NavigationProperty Name="Invoice" Relationship="Self.FK_ServiceEnteries_Invoices" FromRole="ServiceEnteries" ToRole="Invoices" />
-    <NavigationProperty Name="Reports" Relationship="Self.FK_Reports_ServiceEnteries" FromRole="ServiceEnteries" ToRole="Reports" />
   </EntityType>
   <EntityType Name="Staff">
     <Key>
@@ -249,18 +247,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Reports_ServiceEnteries">
-    <End Role="ServiceEnteries" Type="Self.ServiceEntery" Multiplicity="1" />
-    <End Role="Reports" Type="Self.Report" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ServiceEnteries">
-        <PropertyRef Name="SENumber" />
-      </Principal>
-      <Dependent Role="Reports">
-        <PropertyRef Name="SENumber" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Staffs_Roles">
     <End Role="Roles" Type="Self.Role" Multiplicity="1" />
     <End Role="Staffs" Type="Self.Staff" Multiplicity="*" />
@@ -318,10 +304,6 @@
     <AssociationSet Name="FK_ServiceEnteries_Invoices" Association="Self.FK_ServiceEnteries_Invoices">
       <End Role="Invoices" EntitySet="Invoices" />
       <End Role="ServiceEnteries" EntitySet="ServiceEnteries" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Reports_ServiceEnteries" Association="Self.FK_Reports_ServiceEnteries">
-      <End Role="ServiceEnteries" EntitySet="ServiceEnteries" />
-      <End Role="Reports" EntitySet="Reports" />
     </AssociationSet>
     <AssociationSet Name="FK_Staffs_Roles" Association="Self.FK_Staffs_Roles">
       <End Role="Roles" EntitySet="Roles" />

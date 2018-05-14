@@ -19,8 +19,7 @@ namespace DebtorsControl.ViewModel
     {
         public long Id { get; set; }
         public string ClientName { get; set; }
-        public int? Year { get; set; }
-        public int Month { get; set; }
+        public int? Year { get; set; }     
         public string Date { get; set; }
         public string InvoiceNumber { get; set; }
         public string SeNumber { get; set; }
@@ -29,6 +28,7 @@ namespace DebtorsControl.ViewModel
         public decimal Vat { get; set; }
         public decimal TotalInvoice { get; set; }
         public decimal Payable { get; set; }
+        public decimal? NairaValue { get; set; }
         public decimal LcdCharge { get; set; }
         public decimal AmountPaid { get; set; }
         public decimal Outstanding { get; set; }
@@ -38,7 +38,7 @@ namespace DebtorsControl.ViewModel
         public decimal WithHoldingTax { get; set; }
         public string RemittanceAdvise { get; set; }
         public string Comments { get; set; }
-        public decimal? NairaValue { get; set; }
+       
     }
    
 

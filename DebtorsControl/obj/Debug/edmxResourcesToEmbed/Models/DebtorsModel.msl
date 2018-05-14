@@ -14,10 +14,10 @@
     <EntitySetMapping Name="Clients">
       <EntityTypeMapping TypeName="pdInvoiceModel.Client">
         <MappingFragment StoreEntitySet="Clients">
-          <ScalarProperty Name="ClientLogo" ColumnName="ClientLogo" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="ClientName" ColumnName="ClientName" />
           <ScalarProperty Name="ClientCode" ColumnName="ClientCode" />
+          <ScalarProperty Name="ClientLogo" ColumnName="ClientLogo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -58,7 +58,6 @@
     <EntitySetMapping Name="Nairas">
       <EntityTypeMapping TypeName="pdInvoiceModel.Naira">
         <MappingFragment StoreEntitySet="Nairas">
-          <ScalarProperty Name="NairaValue" ColumnName="NairaValue" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="ClientName" ColumnName="ClientName" />
           <ScalarProperty Name="Year" ColumnName="Year" />
@@ -79,6 +78,7 @@
           <ScalarProperty Name="WithHoldingTax" ColumnName="WithHoldingTax" />
           <ScalarProperty Name="RemittanceAdvise" ColumnName="RemittanceAdvise" />
           <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="NairaValue" ColumnName="NairaValue" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

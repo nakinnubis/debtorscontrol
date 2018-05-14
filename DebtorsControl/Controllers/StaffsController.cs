@@ -209,7 +209,7 @@ namespace DebtorsControl.Controllers
                         new NairaInvoice
                         {
                             ClientName = c.ClientName,
-                            Year = c.Year,
+                            //Year = c.Year,
                             InvoiceNumber = c.InvoiceNumber,
                             SeNumber = c.SENumber,
                             Amount = c.Amount,

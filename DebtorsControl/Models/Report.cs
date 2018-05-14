@@ -29,6 +29,5 @@ namespace DebtorsControl.Models
     
         public virtual Client Client { get; set; }
         public virtual Invoice Invoice { get; set; }
-        public virtual ServiceEntery ServiceEntery { get; set; }
     }
 }
