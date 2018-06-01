@@ -42,8 +42,8 @@ namespace DebtorsControl.Controllers
                     var year = DateTime.Now.Year;
                     var data = db.Nairas.Count(c =>c.Outstanding == 0);
                     var datadollar = db.Dollars.Count(c =>c.Outstanding == 0);
-                    var unpaid = db.Nairas.Count(c => c.Year == year && c.Outstanding != 0);
-                    var unpaiddollar = db.Dollars.Count(c => c.Year == year && c.Outstanding != 0);
+                    var unpaid = db.Nairas.Count(c => c.Outstanding != 0);
+                    var unpaiddollar = db.Dollars.Count(c =>c.Outstanding != 0);
                     Session["PaidNaira"] = data;
                     Session["PaidDollar"] = datadollar;
                     Session["Unpaid"] = unpaid;
