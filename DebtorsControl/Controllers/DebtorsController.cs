@@ -40,8 +40,8 @@ namespace DebtorsControl.Controllers
                 using (pdInvoiceEntities db = new pdInvoiceEntities())
                 {
                     var year = DateTime.Now.Year;
-                    var data = db.Nairas.Count(c => c.Year == year && c.Outstanding == 0);
-                    var datadollar = db.Dollars.Count(c => c.Year == year && c.Outstanding == 0);
+                    var data = db.Nairas.Count(c =>c.Outstanding == 0);
+                    var datadollar = db.Dollars.Count(c =>c.Outstanding == 0);
                     var unpaid = db.Nairas.Count(c => c.Year == year && c.Outstanding != 0);
                     var unpaiddollar = db.Dollars.Count(c => c.Year == year && c.Outstanding != 0);
                     Session["PaidNaira"] = data;
@@ -259,10 +259,7 @@ namespace DebtorsControl.Controllers
                         string servicesEntry = "";
                         return await SavePostNaira(form, servicesEntry);
                     }
-                    else
-                    {
-                        return await SavePostNaira(form, seform);
-                    }
+                    return await SavePostNaira(form, seform);
 
                     //}
                 }
@@ -613,9 +610,9 @@ namespace DebtorsControl.Controllers
                                                               c.SENumber.Equals(servicenum));
                     decimal[] result = new decimal[3];
                     if (dollar != null)
-                        result[0] = (decimal) dollar.LcdCharge;
-                    result[1] = (decimal) dollar.Amount;
-                    result[2] = (decimal) dollar.Payable;
+                        result[0] = (decimal)dollar.LcdCharge;
+                    result[1] = (decimal)dollar.Amount;
+                    result[2] = (decimal)dollar.Payable;
                     return result;
                 }
             }
