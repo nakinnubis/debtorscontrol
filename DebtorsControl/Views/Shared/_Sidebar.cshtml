@@ -69,9 +69,13 @@
                                 <li>
                                     @Html.ActionLink("Update Remittance Advise", "RemittanceAdvise", "Debtors")
                                 </li>
-                                <li>
-                                    @Html.ActionLink("Staff Activity Log", "ActivityLog", "Debtors")
-                                </li>
+                                if (email != "sola.saliu@petrodata.net")
+                                {
+                                    <li>
+                                        @Html.ActionLink("Staff Activity Log", "ActivityLog", "Debtors")
+                                    </li>
+                                }
+
                                 @*<li>
                                         @Html.ActionLink("Create Service Entry", "ServiceEntry", "Debtors")
                                     </li>*@

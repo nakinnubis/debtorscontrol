@@ -18,8 +18,5 @@ namespace DebtorsControl.Models
         public string SENumber { get; set; }
         public string InvoiceNumber { get; set; }
         public string ClientName { get; set; }
-    
-        public virtual Client Client { get; set; }
-        public virtual Invoice Invoice { get; set; }
     }
 }

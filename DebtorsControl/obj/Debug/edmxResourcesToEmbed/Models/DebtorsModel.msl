@@ -28,6 +28,7 @@
           <ScalarProperty Name="ClientName" ColumnName="ClientName" />
           <ScalarProperty Name="Year" ColumnName="Year" />
           <ScalarProperty Name="Month" ColumnName="Month" />
+          <ScalarProperty Name="InvoicedMonth" ColumnName="InvoicedMonth" />
           <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
           <ScalarProperty Name="SENumber" ColumnName="SENumber" />
           <ScalarProperty Name="Amount" ColumnName="Amount" />
@@ -62,6 +63,7 @@
           <ScalarProperty Name="ClientName" ColumnName="ClientName" />
           <ScalarProperty Name="Year" ColumnName="Year" />
           <ScalarProperty Name="Month" ColumnName="Month" />
+          <ScalarProperty Name="InvoiceMonth" ColumnName="InvoiceMonth" />
           <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
           <ScalarProperty Name="SENumber" ColumnName="SENumber" />
           <ScalarProperty Name="FxRate" ColumnName="FxRate" />

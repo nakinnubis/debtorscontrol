@@ -231,7 +231,6 @@ C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\Google.Protobuf.xml
 C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\MySql.Data.xml
 C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\nunit.framework.pdb
 C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\bin\nunit.framework.xml
-C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\obj\Debug\DebtorsControl.csprojResolveAssemblyReference.cache
 C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\debtorscontrol\DebtorsControl\bin\DebtorsControl.dll.config
 C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\debtorscontrol\DebtorsControl\bin\DebtorsControl.dll
 C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\debtorscontrol\DebtorsControl\bin\DebtorsControl.pdb

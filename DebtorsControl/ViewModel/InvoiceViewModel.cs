@@ -21,21 +21,22 @@ namespace DebtorsControl.ViewModel
         public string ClientName { get; set; }
         public int? Year { get; set; }     
         public string Date { get; set; }
+        public string InvoicedMonth { get; set; }
         public string InvoiceNumber { get; set; }
         public string SeNumber { get; set; }
         public decimal? FxRate { get; set; }
-        public decimal Amount { get; set; }
-        public decimal Vat { get; set; }
-        public decimal TotalInvoice { get; set; }
-        public decimal Payable { get; set; }
+        public decimal? Amount { get; set; }
+        public decimal? Vat { get; set; }
+        public decimal? TotalInvoice { get; set; }
+        public decimal? Payable { get; set; }
         public decimal? NairaValue { get; set; }
-        public decimal LcdCharge { get; set; }
-        public decimal AmountPaid { get; set; }
-        public decimal Outstanding { get; set; }
-        public DateTime DateSubmitted { get; set; }
+        public decimal? LcdCharge { get; set; }
+        public decimal? AmountPaid { get; set; }
+        public decimal? Outstanding { get; set; }
+        public DateTime? DateSubmitted { get; set; }
         public DateTime? DatePaid { get; set; }
-        public DateTime DueDate { get; set; }
-        public decimal WithHoldingTax { get; set; }
+        public DateTime? DueDate { get; set; }
+        public decimal? WithHoldingTax { get; set; }
         public string RemittanceAdvise { get; set; }
         public string Comments { get; set; }
        
@@ -51,17 +52,17 @@ namespace DebtorsControl.ViewModel
         public string Date { get; set; }
         public string InvoiceNumber { get; set; }
         public string SeNumber { get; set; }
-        public decimal Amount { get; set; }
-        public decimal Vat { get; set; }
-        public decimal TotalInvoice { get; set; }
-        public decimal Payable { get; set; }
-        public decimal LcdCharge { get; set; }
-        public decimal AmountPaid { get; set; }
-        public decimal Outstanding { get; set; }
-        public DateTime DateSubmitted { get; set; }
-        public DateTime DueDate { get; set; }
+        public decimal? Amount { get; set; }
+        public decimal? Vat { get; set; }
+        public decimal? TotalInvoice { get; set; }
+        public decimal? Payable { get; set; }
+        public decimal? LcdCharge { get; set; }
+        public decimal? AmountPaid { get; set; }
+        public decimal? Outstanding { get; set; }
+        public DateTime? DateSubmitted { get; set; }
+        public DateTime? DueDate { get; set; }
         public DateTime DatePaid { get; set; }
-        public decimal WithHoldinTax { get; set; }
+        public decimal? WithHoldinTax { get; set; }
         public string RemittanceAdvise { get; set; }
         public string Comments { get; set; }
     }
@@ -80,8 +81,8 @@ namespace DebtorsControl.ViewModel
     public class Reconcilation
     {
         public string ClientName { get; set; }
-        public decimal NairaOutsnd { get; set; }
-        public decimal DollarOutsnd { get; set; }
+        public decimal? NairaOutsnd { get; set; }
+        public decimal? DollarOutsnd { get; set; }
     }
 
     public class Year

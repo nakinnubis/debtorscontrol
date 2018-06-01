@@ -40,10 +40,10 @@ namespace DebtorsControl.Controllers
                 using (pdInvoiceEntities db = new pdInvoiceEntities())
                 {
                     var year = DateTime.Now.Year;
-                    var data = db.Nairas.Count(c => c.Year == year && c.Outstanding.Equals(0));
-                    var datadollar = db.Dollars.Count(c => c.Year == year && c.Outstanding.Equals(0));
-                    var unpaid = db.Nairas.Count(c => c.Year == year && !c.Outstanding.Equals(0));
-                    var unpaiddollar = db.Dollars.Count(c => c.Year == year && !c.Outstanding.Equals(0));
+                    var data = db.Nairas.Count(c => c.Year == year && c.Outstanding == 0);
+                    var datadollar = db.Dollars.Count(c => c.Year == year && c.Outstanding == 0);
+                    var unpaid = db.Nairas.Count(c => c.Year == year && c.Outstanding != 0);
+                    var unpaiddollar = db.Dollars.Count(c => c.Year == year && c.Outstanding != 0);
                     Session["PaidNaira"] = data;
                     Session["PaidDollar"] = datadollar;
                     Session["Unpaid"] = unpaid;
@@ -281,6 +281,7 @@ namespace DebtorsControl.Controllers
             var date = form["year"].Split('-');
             var year = date[0];
             var month = date[1];
+            var invoicedmonth = form["year"];
             var clientName = form["GetClients"];
             var invoicenum = form["invoicenumber"];
             // servicesEntry = form["servicenumber"];
@@ -318,6 +319,7 @@ namespace DebtorsControl.Controllers
                     AmountPaid = decimal.Parse(amountpaid),
                     Year = int.Parse(year),
                     Month = int.Parse(month),
+                    InvoiceMonth = invoicedmonth,
                     InvoiceNumber = invoicenum,
                     SENumber = servicesEntry,
                     FxRate = decimal.Parse(fxRate),
@@ -403,6 +405,7 @@ namespace DebtorsControl.Controllers
             var date = form["year"].Split('-');
             var year = date[0];
             var month = date[1];
+            var invoicedmonth = form["year"];
             var clientName = form["GetClients"];
             var invoicenum = form["invoicenumber"];
             //servicesEntry = form["servicenumber"];
@@ -438,6 +441,7 @@ namespace DebtorsControl.Controllers
                     AmountPaid = decimal.Parse(amountpaid),
                     Year = int.Parse(year),
                     Month = int.Parse(month),
+                    InvoicedMonth = invoicedmonth,
                     InvoiceNumber = invoicenum,
                     SENumber = servicesEntry,
                     VAT = decimal.Parse(vat),
@@ -598,9 +602,9 @@ namespace DebtorsControl.Controllers
                         c.SENumber.Equals(servicenum));
                     decimal[] result = new decimal[3];
                     if (naira != null)
-                        result[0] = naira.LcdCharge;
-                    result[1] = naira.Amount;
-                    result[2] = naira.Payable;
+                        result[0] = (decimal) naira.LcdCharge;
+                    result[1] = (decimal) naira.Amount;
+                    result[2] = (decimal) naira.Payable;
                     return result;
                 }
                 else
@@ -609,9 +613,9 @@ namespace DebtorsControl.Controllers
                                                               c.SENumber.Equals(servicenum));
                     decimal[] result = new decimal[3];
                     if (dollar != null)
-                        result[0] = dollar.LcdCharge;
-                    result[1] = dollar.Amount;
-                    result[2] = dollar.Payable;
+                        result[0] = (decimal) dollar.LcdCharge;
+                    result[1] = (decimal) dollar.Amount;
+                    result[2] = (decimal) dollar.Payable;
                     return result;
                 }
             }
@@ -888,13 +892,13 @@ namespace DebtorsControl.Controllers
 
         public List<NairaInvoice> GetNairaInvoices(pdInvoiceEntities db, int year, string client)
         {
-            var naira = db.Nairas.Where(c => c.DateSubmitted.Year.Equals(year) && c.ClientName.Equals(client)).OrderBy(c => c.Month).ToList();
+            var naira = db.Nairas.Where(c => c.DateSubmitted.Value.Year.Equals(year) && c.ClientName.Equals(client)).OrderBy(c => c.Month).ToList();
             var nairainvoice = new List<NairaInvoice>();
             foreach (var n in naira)
             {
                 var nairapart = new NairaInvoice
                 {
-                    Date = $"{n.DateSubmitted.Month}/{n.Year}",
+                    Date = $"{n.DateSubmitted.Value.Month}/{n.Year}",
                     InvoiceNumber = n.InvoiceNumber,
                     SeNumber = n.SENumber,
                     FxRate = n.FxRate,
@@ -918,13 +922,13 @@ namespace DebtorsControl.Controllers
         }
         public List<DollarInvoice> GetDollarInvoices(pdInvoiceEntities db, int year, string client)
         {
-            var dollar = db.Dollars.Where(c => c.DateSubmitted.Year.Equals(year) && c.ClientName.Equals(client)).OrderBy(c => c.DateSubmitted.Month).ToList();
+            var dollar = db.Dollars.Where(c => c.DateSubmitted.Value.Year.Equals(year) && c.ClientName.Equals(client)).OrderBy(c => c.DateSubmitted.Value.Month).ToList();
             var dollarinvoice = new List<DollarInvoice>();
             foreach (var n in dollar)
             {
                 var nairapart = new DollarInvoice
                 {
-                    Date = $"{n.DateSubmitted.Month}/{n.Year}",
+                    Date = $"{n.DateSubmitted.Value.Month}/{n.Year}",
                     InvoiceNumber = n.InvoiceNumber,
                     SeNumber = n.SENumber,
                     Amount = n.Amount,
@@ -964,7 +968,7 @@ namespace DebtorsControl.Controllers
             Response.ClearContent();
             Response.Buffer = true;
             Response.AddHeader("content-disposition",
-                "attachment; filename=export.xlsx");
+                "attachment; filename=export.xls");
             Response.ContentType = "application/ms-excel";
             Response.Charset = "";
             StringWriter objStringWriter = new StringWriter();
@@ -1013,9 +1017,9 @@ namespace DebtorsControl.Controllers
                 var _year = int.Parse(year);
                 // long id = 0;
                 //  var dataList = new List<InvoiceExport>();
-                var naira = db.Nairas.Where(c => c.DateSubmitted.Year.Equals(_year) && c.ClientName.Equals(clientname))
+                var naira = db.Nairas.Where(c => c.DateSubmitted.Value.Year.Equals(_year) && c.ClientName.Equals(clientname))
                     .AsEnumerable();
-                var dollar = db.Dollars.Where(c => c.DateSubmitted.Year.Equals(_year) && c.ClientName.Equals(clientname))
+                var dollar = db.Dollars.Where(c => c.DateSubmitted.Value.Year.Equals(_year) && c.ClientName.Equals(clientname))
                     .AsEnumerable();
                 // IEnumerable<dynamic> ds = dynamicDataType.AsEnumerable();
                 //var clientdata = ds as dynamic[] ?? ds.ToArray();
@@ -1031,7 +1035,7 @@ namespace DebtorsControl.Controllers
             {
                 var export = new InvoiceExport
                 {
-                    Date = $"{nair.DateSubmitted.Month}/{nair.DateSubmitted.Year}",
+                    Date = $"{nair.DateSubmitted.Value.Month}/{nair.DateSubmitted.Value.Year}",
                     InvoiceType = "Naira",
                     ClientName = nair.ClientName,
                     InvoiceNumber = nair.InvoiceNumber,
@@ -1045,8 +1049,8 @@ namespace DebtorsControl.Controllers
                     LcdCharge = nair.LcdCharge,
                     AmountPaid = nair.AmountPaid,
                     Outstanding = nair.Outstanding,
-                    DateSubmitted = nair.DateSubmitted.ToString("dd-MMMM-yyyy"),
-                    DueDate = nair.DueDate.ToString("dd-MMMM-yyyy"),
+                    DateSubmitted = nair.DateSubmitted.Value.ToString("dd-MMMM-yyyy"),
+                    DueDate = nair.DueDate.Value.ToString("dd-MMMM-yyyy"),
                     WithHoldingTax = nair.WithHoldingTax,
                     Comments = nair.Comments,
                 };
@@ -1057,7 +1061,7 @@ namespace DebtorsControl.Controllers
             {
                 var export = new InvoiceExport
                 {
-                    Date = $"{nair.DateSubmitted.Month}/{nair.DateSubmitted.Year}",
+                    Date = $"{nair.DateSubmitted.Value.Month}/{nair.DateSubmitted.Value.Year}",
                     InvoiceType = "Dollar",
                     ClientName = nair.ClientName,
                     InvoiceNumber = nair.InvoiceNumber,
@@ -1070,8 +1074,8 @@ namespace DebtorsControl.Controllers
                     LcdCharge = nair.LcdCharge,
                     AmountPaid = nair.AmountPaid,
                     Outstanding = nair.Outstanding,
-                    DateSubmitted = nair.DateSubmitted.ToString("dd-MMMM-yyyy"),
-                    DueDate = nair.DueDate.ToString("dd-MMMM-yyyy"),
+                    DateSubmitted = nair.DateSubmitted.Value.ToString("dd-MMMM-yyyy"),
+                    DueDate = nair.DueDate.Value.ToString("dd-MMMM-yyyy"),
                     WithHoldingTax = nair.WithHoldinTax,
                     Comments = nair.Comments
                 };

@@ -408,6 +408,7 @@
     <Content Include="Content\DataTables\css\semanticui.scss" />
     <Content Include="Content\DataTables\css\mixins.scss" />
     <Content Include="Content\DataTables\css\common.scss" />
+    <Content Include="Models\DebtorsControl.edmx.sql" />
     <Content Include="Models\DebtorsModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DebtorsModel.edmx</DependentUpon>
@@ -3440,7 +3441,6 @@
     <Compile Include="Controllers\PaidByClientController.cs" />
     <Compile Include="Controllers\PaidvsUnpaidController.cs" />
     <Compile Include="Controllers\ServiceEntryController.cs" />
-    <Compile Include="Controllers\StaffsController.cs" />
     <Compile Include="Filters\AdminAuthFilter.cs" />
     <Compile Include="Filters\ClientAuthFilters.cs" />
     <Compile Include="Global.asax.cs">
@@ -3502,7 +3502,9 @@
     <Compile Include="ViewModel\StaffViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\web.config" />
+    <Content Include="Views\web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -4153,9 +4155,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>49999</DevelopmentServerPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:56999/</IISUrl>
+          <IISUrl>http://localhost:55416/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

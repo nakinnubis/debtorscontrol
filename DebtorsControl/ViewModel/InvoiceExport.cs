@@ -14,17 +14,17 @@ namespace DebtorsControl.ViewModel
         public string InvoiceNumber { get; set; }
         public string SeNumber { get; set; }
         public decimal? FxRate { get; set; }
-        public decimal Amount { get; set; }
-        public decimal Vat { get; set; }
-        public decimal TotalInvoice { get; set; }
-        public decimal Payable { get; set; }
+        public decimal? Amount { get; set; }
+        public decimal? Vat { get; set; }
+        public decimal? TotalInvoice { get; set; }
+        public decimal? Payable { get; set; }
         public decimal? NairaEquiv { get; set; }
-        public decimal LcdCharge { get; set; }
-        public decimal AmountPaid { get; set; }
-        public decimal Outstanding { get; set; }
+        public decimal? LcdCharge { get; set; }
+        public decimal? AmountPaid { get; set; }
+        public decimal? Outstanding { get; set; }
         public string DateSubmitted { get; set; }
         public string DueDate { get; set; }
-        public decimal WithHoldingTax { get; set; }
+        public decimal? WithHoldingTax { get; set; }
         public string RemittanceAdvise { get; set; }
         public string Comments { get; set; }
        

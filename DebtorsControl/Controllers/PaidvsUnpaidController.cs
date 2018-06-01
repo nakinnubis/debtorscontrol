@@ -18,8 +18,8 @@ namespace DebtorsControl.Controllers
             var m = int.Parse(month);
             using (pdInvoiceEntities db = new pdInvoiceEntities())
             {
-                var paid = db.Nairas.Count(c => c.Outstanding == 0 && c.DateSubmitted.Month.Equals(m));
-                var unpaid = db.Nairas.Count(c => c.Outstanding != 0 && c.DateSubmitted.Month.Equals(m));
+                var paid = db.Nairas.Count(c => c.Outstanding == 0 && c.DateSubmitted.Value.Month.Equals(m));
+                var unpaid = db.Nairas.Count(c => c.Outstanding != 0 && c.DateSubmitted.Value.Month.Equals(m));
                 var data = new Activiti
                 {
                     Paid = paid,
@@ -130,13 +130,13 @@ namespace DebtorsControl.Controllers
             using (pdInvoiceEntities db = new pdInvoiceEntities())
             {
                 var m = Enumerable.Range(1, 12);
-                var months = db.Nairas.Select(c => c.DateSubmitted.Month).Distinct().AsEnumerable();
+                var months = db.Nairas.Select(c => c.DateSubmitted.Value.Month).Distinct().AsEnumerable();
                 var year = DateTime.Now.Year;
-                var data = db.Nairas.Where(c => c.DateSubmitted.Year == year).ToList();
+                var data = db.Nairas.Where(c => c.DateSubmitted.Value.Year == year).ToList();
                 foreach (var b in m)
                 {
-                    var ninflow =data.Where(c => c.DateSubmitted.Month == b).Sum(c => c.AmountPaid);
-                    var outflow = data.Where(c => c.DateSubmitted.Month == b).Sum(c => c.Outstanding);
+                    var ninflow =data.Where(c => c.DateSubmitted.Value.Month == b).Sum(c => c.AmountPaid);
+                    var outflow = data.Where(c => c.DateSubmitted.Value.Month == b).Sum(c => c.Outstanding);
                     var p = new Debts
                     {
                       //  Dtype = "Paid",
@@ -164,11 +164,11 @@ namespace DebtorsControl.Controllers
                 var m = Enumerable.Range(1, 12);
               //  var months = db.Nairas.Select(c => c.Month).Distinct().AsEnumerable();
                 var year = DateTime.Now.Year;
-                var data = db.Dollars.Where(c => c.DateSubmitted.Year == year).ToList();
+                var data = db.Dollars.Where(c => c.DateSubmitted.Value.Year == year).ToList();
                 foreach (var b in m)
                 {
-                    var ninflow = data.Where(c => c.DateSubmitted.Month == b).Sum(c => c.AmountPaid);
-                    var outflow = data.Where(c => c.DateSubmitted.Month == b).Sum(c => c.Outstanding);
+                    var ninflow = data.Where(c => c.DateSubmitted.Value.Month == b).Sum(c => c.AmountPaid);
+                    var outflow = data.Where(c => c.DateSubmitted.Value.Month == b).Sum(c => c.Outstanding);
                     var p = new Debts
                     {
                         Month = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(b),
@@ -196,11 +196,11 @@ namespace DebtorsControl.Controllers
                 //  var months = db.Nairas.Select(c => c.Month).Distinct().AsEnumerable();
                 var year = DateTime.Now.Year;
                 var queryYear = int.Parse(yr);
-                var data = db.Dollars.Where(c => c.DateSubmitted.Year == queryYear && c.ClientName.Equals(client)).ToList();
+                var data = db.Dollars.Where(c => c.DateSubmitted.Value.Year == queryYear && c.ClientName.Equals(client)).ToList();
                 foreach (var b in m)
                 {
-                    var ninflow = data.Where(c => c.DateSubmitted.Month == b).Sum(c => c.AmountPaid);
-                    var outflow = data.Where(c => c.DateSubmitted.Month == b).Sum(c => c.Outstanding);
+                    var ninflow = data.Where(c => c.DateSubmitted.Value.Month == b).Sum(c => c.AmountPaid);
+                    var outflow = data.Where(c => c.DateSubmitted.Value.Month == b).Sum(c => c.Outstanding);
                     var p = new Debts
                     {
                         Month = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(b),
@@ -225,14 +225,14 @@ namespace DebtorsControl.Controllers
             using (pdInvoiceEntities db = new pdInvoiceEntities())
             {
                 var m = Enumerable.Range(1, 12);
-                var months = db.Nairas.Select(c => c.DateSubmitted.Month).Distinct().AsEnumerable();
+                var months = db.Nairas.Select(c => c.DateSubmitted.Value.Month).Distinct().AsEnumerable();
                 var year = DateTime.Now.Year;
                 var queryYear = int.Parse(yr);
-                var data = db.Nairas.Where(c => c.DateSubmitted.Year == queryYear && c.ClientName.Equals(client)).ToList();
+                var data = db.Nairas.Where(c => c.DateSubmitted.Value.Year == queryYear && c.ClientName.Equals(client)).ToList();
                 foreach (var b in m)
                 {
-                    var ninflow = data.Where(c => c.DateSubmitted.Month == b).Sum(c => c.AmountPaid);
-                    var outflow = data.Where(c => c.DateSubmitted.Month == b).Sum(c => c.Outstanding);
+                    var ninflow = data.Where(c => c.DateSubmitted.Value.Month == b).Sum(c => c.AmountPaid);
+                    var outflow = data.Where(c => c.DateSubmitted.Value.Month == b).Sum(c => c.Outstanding);
                     var p = new Debts
                     {
                         //  Dtype = "Paid",
@@ -255,7 +255,7 @@ namespace DebtorsControl.Controllers
         //public string Dtype { get; set; }
         public decimal Paid { get; set; }
         public string Month { get; set; }
-        public decimal Unpaid { get; set; }
+        public decimal? Unpaid { get; set; }
     }
 
     public class Activiti

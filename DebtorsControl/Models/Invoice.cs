@@ -14,27 +14,8 @@ namespace DebtorsControl.Models
     
     public partial class Invoice
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Invoice()
-        {
-            this.Dollars = new HashSet<Dollar>();
-            this.Nairas = new HashSet<Naira>();
-            this.Reports = new HashSet<Report>();
-            this.ServiceEnteries = new HashSet<ServiceEntery>();
-        }
-    
         public long Id { get; set; }
         public string InvoiceNumber { get; set; }
         public string ClientName { get; set; }
-    
-        public virtual Client Client { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Dollar> Dollars { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Naira> Nairas { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Report> Reports { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ServiceEntery> ServiceEnteries { get; set; }
     }
 }

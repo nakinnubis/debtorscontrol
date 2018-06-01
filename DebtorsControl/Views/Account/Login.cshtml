@@ -44,11 +44,12 @@
                  <span class="login100-form-title p-b-26">
                      Welcome
                  </span>
-                 <p>@ViewBag.ErrorMessage</p>
+               
                 <span class="login100-form-title p-b-48">
                     <img src="../../img/logon.png" alt="Petrodata Logo" />
                 </span>
-
+                <p class="text-danger">@ViewBag.ErrorMessage</p>
+                <p class="text-danger">@ViewBag.PasswordError</p>
                 <div class="wrap-input100 validate-input" data-validate="Valid email is: a@b.c">
                     <input class="input100" type="text" name="email">
                     <span class="focus-input100" data-placeholder="Email"></span>

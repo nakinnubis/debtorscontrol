@@ -16,25 +16,23 @@ namespace DebtorsControl.Models
     {
         public long Id { get; set; }
         public string ClientName { get; set; }
-        public int Year { get; set; }
-        public int Month { get; set; }
+        public Nullable<int> Year { get; set; }
+        public Nullable<int> Month { get; set; }
+        public string InvoicedMonth { get; set; }
         public string InvoiceNumber { get; set; }
         public string SENumber { get; set; }
-        public decimal Amount { get; set; }
-        public decimal VAT { get; set; }
-        public decimal TotalInvoice { get; set; }
-        public decimal Payable { get; set; }
-        public decimal LcdCharge { get; set; }
-        public decimal AmountPaid { get; set; }
-        public decimal Outstanding { get; set; }
-        public System.DateTime DateSubmitted { get; set; }
-        public System.DateTime DueDate { get; set; }
+        public Nullable<decimal> Amount { get; set; }
+        public Nullable<decimal> VAT { get; set; }
+        public Nullable<decimal> TotalInvoice { get; set; }
+        public Nullable<decimal> Payable { get; set; }
+        public Nullable<decimal> LcdCharge { get; set; }
+        public Nullable<decimal> AmountPaid { get; set; }
+        public Nullable<decimal> Outstanding { get; set; }
+        public Nullable<System.DateTime> DateSubmitted { get; set; }
+        public Nullable<System.DateTime> DueDate { get; set; }
         public Nullable<System.DateTime> DatePaid { get; set; }
-        public decimal WithHoldinTax { get; set; }
+        public Nullable<decimal> WithHoldinTax { get; set; }
         public string RemittanceAdvise { get; set; }
         public string Comments { get; set; }
-    
-        public virtual Client Client { get; set; }
-        public virtual Invoice Invoice { get; set; }
     }
 }

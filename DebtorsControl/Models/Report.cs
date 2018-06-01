@@ -26,8 +26,5 @@ namespace DebtorsControl.Models
         public System.DateTime DatePaid { get; set; }
         public bool WithHoldingTaxStatus { get; set; }
         public bool RemittanceAdviseStatus { get; set; }
-    
-        public virtual Client Client { get; set; }
-        public virtual Invoice Invoice { get; set; }
     }
 }
