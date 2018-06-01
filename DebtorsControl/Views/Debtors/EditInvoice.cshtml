@@ -75,7 +75,7 @@
                             <td>
                                 @if (naira.Date != null)
                                 {
-                                    @naira.Date
+                                    @naira.Date.Value.ToString("MMM-yyyy")
                                     
                                 }
                             </td>
@@ -145,7 +145,7 @@
                             <td>
                                 @if (dola.Date != null)
                                 {
-                                    @dola.Date
+                                    @dola.Date.Value.ToString("MMM-yyyy")
                                 }
                             </td>
                             <td>@dola.InvoiceNumber</td>
