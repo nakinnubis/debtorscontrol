@@ -20,7 +20,7 @@ namespace DebtorsControl.ViewModel
         public long Id { get; set; }
         public string ClientName { get; set; }
         public int? Year { get; set; }     
-        public string Date { get; set; }
+        public DateTime? Date { get; set; }
         public string InvoicedMonth { get; set; }
         public string InvoiceNumber { get; set; }
         public string SeNumber { get; set; }
@@ -49,7 +49,7 @@ namespace DebtorsControl.ViewModel
         public string ClientName { get; set; }
         public int? Year { get; set; }
         public int Month { get; set; }
-        public string Date { get; set; }
+        public DateTime? Date { get; set; }
         public string InvoiceNumber { get; set; }
         public string SeNumber { get; set; }
         public decimal? Amount { get; set; }

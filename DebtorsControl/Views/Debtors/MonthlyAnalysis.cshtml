@@ -91,7 +91,7 @@
         }*@
                                     <td>@($"{naira.FxRate:n0}")</td>
                                     @*<td>@naira.</td>*@
-                                    <td>@naira.DateSubmitted?.ToString("dd-MMM-yyyy")</td>                                  
+                                    <td>@naira.Date</td>                                  
                                     <td>@naira.InvoiceNumber</td>
                                     <td>@naira.SeNumber</td>
                                     <td>@($"{naira.Amount:n0}")</td>
@@ -175,7 +175,7 @@
                                                         @foreach (var dola in Model.DollarInvoices)
                                                         {
                                                         <tr>
-                                                            <td>@dola.DateSubmitted?.ToString("dd-MMM-yyyy")</td>                                                            
+                                                            <td>@dola.Date</td>                                                            
                                                             <td>@dola.InvoiceNumber</td>
                                                             <td>@dola.SeNumber</td>
                                                             <td>@($"{dola.Amount:n0}")</td>

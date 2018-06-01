@@ -29,9 +29,7 @@
           </Key>
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ClientName" Type="nvarchar" MaxLength="400" />
-          <Property Name="Year" Type="int" />
-          <Property Name="Month" Type="int" />
-          <Property Name="InvoicedMonth" Type="nvarchar(max)" />
+          <Property Name="InvoicedMonth" Type="date" />
           <Property Name="InvoiceNumber" Type="nvarchar" MaxLength="256" />
           <Property Name="SENumber" Type="nvarchar" MaxLength="256" />
           <Property Name="Amount" Type="decimal" Precision="18" Scale="5" />
@@ -62,9 +60,7 @@
           </Key>
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ClientName" Type="nvarchar" MaxLength="400" Nullable="false" />
-          <Property Name="Year" Type="int" />
-          <Property Name="Month" Type="int" />
-          <Property Name="InvoiceMonth" Type="nvarchar(max)" />
+          <Property Name="InvoiceMonth" Type="date" />
           <Property Name="InvoiceNumber" Type="nvarchar" MaxLength="256" />
           <Property Name="SENumber" Type="nvarchar" MaxLength="256" />
           <Property Name="FxRate" Type="decimal" Precision="18" Scale="5" />
@@ -182,9 +178,7 @@
           </Key>
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ClientName" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
-          <Property Name="Year" Type="Int32" />
-          <Property Name="Month" Type="Int32" />
-          <Property Name="InvoicedMonth" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="InvoicedMonth" Type="DateTime" Precision="0" />
           <Property Name="InvoiceNumber" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="SENumber" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="Amount" Type="Decimal" Precision="18" Scale="5" />
@@ -215,9 +209,7 @@
           </Key>
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ClientName" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Year" Type="Int32" />
-          <Property Name="Month" Type="Int32" />
-          <Property Name="InvoiceMonth" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="InvoiceMonth" Type="DateTime" Precision="0" />
           <Property Name="InvoiceNumber" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="SENumber" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="FxRate" Type="Decimal" Precision="18" Scale="5" />
@@ -339,8 +331,6 @@
               <MappingFragment StoreEntitySet="Dollars">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ClientName" ColumnName="ClientName" />
-                <ScalarProperty Name="Year" ColumnName="Year" />
-                <ScalarProperty Name="Month" ColumnName="Month" />
                 <ScalarProperty Name="InvoicedMonth" ColumnName="InvoicedMonth" />
                 <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
                 <ScalarProperty Name="SENumber" ColumnName="SENumber" />
@@ -374,8 +364,6 @@
               <MappingFragment StoreEntitySet="Nairas">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ClientName" ColumnName="ClientName" />
-                <ScalarProperty Name="Year" ColumnName="Year" />
-                <ScalarProperty Name="Month" ColumnName="Month" />
                 <ScalarProperty Name="InvoiceMonth" ColumnName="InvoiceMonth" />
                 <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
                 <ScalarProperty Name="SENumber" ColumnName="SENumber" />

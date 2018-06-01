@@ -26,8 +26,6 @@
         <MappingFragment StoreEntitySet="Dollars">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="ClientName" ColumnName="ClientName" />
-          <ScalarProperty Name="Year" ColumnName="Year" />
-          <ScalarProperty Name="Month" ColumnName="Month" />
           <ScalarProperty Name="InvoicedMonth" ColumnName="InvoicedMonth" />
           <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
           <ScalarProperty Name="SENumber" ColumnName="SENumber" />
@@ -61,8 +59,6 @@
         <MappingFragment StoreEntitySet="Nairas">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="ClientName" ColumnName="ClientName" />
-          <ScalarProperty Name="Year" ColumnName="Year" />
-          <ScalarProperty Name="Month" ColumnName="Month" />
           <ScalarProperty Name="InvoiceMonth" ColumnName="InvoiceMonth" />
           <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
           <ScalarProperty Name="SENumber" ColumnName="SENumber" />

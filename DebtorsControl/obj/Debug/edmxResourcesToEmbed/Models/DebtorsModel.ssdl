@@ -24,9 +24,7 @@
     </Key>
     <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ClientName" Type="nvarchar" MaxLength="400" />
-    <Property Name="Year" Type="int" />
-    <Property Name="Month" Type="int" />
-    <Property Name="InvoicedMonth" Type="nvarchar(max)" />
+    <Property Name="InvoicedMonth" Type="date" />
     <Property Name="InvoiceNumber" Type="nvarchar" MaxLength="256" />
     <Property Name="SENumber" Type="nvarchar" MaxLength="256" />
     <Property Name="Amount" Type="decimal" Precision="18" Scale="5" />
@@ -57,9 +55,7 @@
     </Key>
     <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ClientName" Type="nvarchar" MaxLength="400" Nullable="false" />
-    <Property Name="Year" Type="int" />
-    <Property Name="Month" Type="int" />
-    <Property Name="InvoiceMonth" Type="nvarchar(max)" />
+    <Property Name="InvoiceMonth" Type="date" />
     <Property Name="InvoiceNumber" Type="nvarchar" MaxLength="256" />
     <Property Name="SENumber" Type="nvarchar" MaxLength="256" />
     <Property Name="FxRate" Type="decimal" Precision="18" Scale="5" />

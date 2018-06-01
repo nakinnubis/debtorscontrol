@@ -16,9 +16,7 @@ namespace DebtorsControl.Models
     {
         public long Id { get; set; }
         public string ClientName { get; set; }
-        public Nullable<int> Year { get; set; }
-        public Nullable<int> Month { get; set; }
-        public string InvoicedMonth { get; set; }
+        public Nullable<System.DateTime> InvoicedMonth { get; set; }
         public string InvoiceNumber { get; set; }
         public string SENumber { get; set; }
         public Nullable<decimal> Amount { get; set; }

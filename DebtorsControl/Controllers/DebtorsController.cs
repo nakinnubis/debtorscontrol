@@ -276,9 +276,7 @@ namespace DebtorsControl.Controllers
         private async Task<ActionResult> SavePostNaira(FormCollection form, string servicesEntry)
         {
             var date = form["year"].Split('-');
-            var year = date[0];
-            var month = date[1];
-            var invoicedmonth = form["year"];
+            var invoicedmonth = DateTime.Parse(form["year"]).Date;
             var clientName = form["GetClients"];
             var invoicenum = form["invoicenumber"];
             // servicesEntry = form["servicenumber"];
@@ -314,8 +312,6 @@ namespace DebtorsControl.Controllers
                     ClientName = clientName,
                     Amount = decimal.Parse(amount),
                     AmountPaid = decimal.Parse(amountpaid),
-                    Year = int.Parse(year),
-                    Month = int.Parse(month),
                     InvoiceMonth = invoicedmonth,
                     InvoiceNumber = invoicenum,
                     SENumber = servicesEntry,
@@ -400,9 +396,7 @@ namespace DebtorsControl.Controllers
         private async Task<ActionResult> SavePostDollar(FormCollection form, string servicesEntry)
         {
             var date = form["year"].Split('-');
-            var year = date[0];
-            var month = date[1];
-            var invoicedmonth = form["year"];
+            var invoicedmonth = DateTime.Parse(form["year"]).Date;
             var clientName = form["GetClients"];
             var invoicenum = form["invoicenumber"];
             //servicesEntry = form["servicenumber"];
@@ -436,8 +430,6 @@ namespace DebtorsControl.Controllers
                     ClientName = clientName,
                     Amount = decimal.Parse(amount),
                     AmountPaid = decimal.Parse(amountpaid),
-                    Year = int.Parse(year),
-                    Month = int.Parse(month),
                     InvoicedMonth = invoicedmonth,
                     InvoiceNumber = invoicenum,
                     SENumber = servicesEntry,
@@ -889,13 +881,13 @@ namespace DebtorsControl.Controllers
 
         public List<NairaInvoice> GetNairaInvoices(pdInvoiceEntities db, int year, string client)
         {
-            var naira = db.Nairas.Where(c => c.DateSubmitted.Value.Year.Equals(year) && c.ClientName.Equals(client)).OrderBy(c => c.Month).ToList();
+            var naira = db.Nairas.Where(c => c.InvoiceMonth.Value.Year.Equals(year) && c.ClientName.Equals(client)).OrderBy(c => c.InvoiceMonth).ToList();
             var nairainvoice = new List<NairaInvoice>();
             foreach (var n in naira)
             {
                 var nairapart = new NairaInvoice
                 {
-                    Date = $"{n.DateSubmitted.Value.Month}/{n.Year}",
+                    Date =n.InvoiceMonth.Value.Date,
                     InvoiceNumber = n.InvoiceNumber,
                     SeNumber = n.SENumber,
                     FxRate = n.FxRate,
@@ -919,13 +911,13 @@ namespace DebtorsControl.Controllers
         }
         public List<DollarInvoice> GetDollarInvoices(pdInvoiceEntities db, int year, string client)
         {
-            var dollar = db.Dollars.Where(c => c.DateSubmitted.Value.Year.Equals(year) && c.ClientName.Equals(client)).OrderBy(c => c.DateSubmitted.Value.Month).ToList();
+            var dollar = db.Dollars.Where(c => c.InvoicedMonth.Value.Year.Equals(year) && c.ClientName.Equals(client)).OrderBy(c => c.DateSubmitted.Value.Month).ToList();
             var dollarinvoice = new List<DollarInvoice>();
             foreach (var n in dollar)
             {
                 var nairapart = new DollarInvoice
                 {
-                    Date = $"{n.DateSubmitted.Value.Month}/{n.Year}",
+                    Date = n.InvoicedMonth.Value.Date,
                     InvoiceNumber = n.InvoiceNumber,
                     SeNumber = n.SENumber,
                     Amount = n.Amount,
@@ -1130,7 +1122,7 @@ namespace DebtorsControl.Controllers
                         new DollarInvoice
                         {
                             ClientName = c.ClientName,
-                            Year = c.Year,
+                            Year = c.InvoicedMonth.Value.Year,
                             InvoiceNumber = c.InvoiceNumber,
                             SeNumber = c.SENumber,
                             Amount = c.Amount,
@@ -1158,7 +1150,7 @@ namespace DebtorsControl.Controllers
                         new NairaInvoice
                         {
                             ClientName = c.ClientName,
-                            //Year = c.Year,
+                            Year = c.InvoiceMonth.Value.Year,
                             InvoiceNumber = c.InvoiceNumber,
                             SeNumber = c.SENumber,
                             Amount = c.Amount,
@@ -1413,7 +1405,7 @@ namespace DebtorsControl.Controllers
                         new DollarInvoice
                         {
                             ClientName = c.ClientName,
-                            Year = c.Year,
+                            Year = c.InvoicedMonth.Value.Year,
                             InvoiceNumber = c.InvoiceNumber,
                             SeNumber = c.SENumber,
                             Amount = c.Amount,

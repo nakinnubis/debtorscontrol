@@ -24,9 +24,7 @@
     </Key>
     <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ClientName" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
-    <Property Name="Year" Type="Int32" />
-    <Property Name="Month" Type="Int32" />
-    <Property Name="InvoicedMonth" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="InvoicedMonth" Type="DateTime" Precision="0" />
     <Property Name="InvoiceNumber" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
     <Property Name="SENumber" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
     <Property Name="Amount" Type="Decimal" Precision="18" Scale="5" />
@@ -57,9 +55,7 @@
     </Key>
     <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ClientName" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Year" Type="Int32" />
-    <Property Name="Month" Type="Int32" />
-    <Property Name="InvoiceMonth" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="InvoiceMonth" Type="DateTime" Precision="0" />
     <Property Name="InvoiceNumber" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
     <Property Name="SENumber" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
     <Property Name="FxRate" Type="Decimal" Precision="18" Scale="5" />
