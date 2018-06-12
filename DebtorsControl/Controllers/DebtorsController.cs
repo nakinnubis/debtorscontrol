@@ -256,7 +256,7 @@ namespace DebtorsControl.Controllers
                     var seform = form["servicenumber"];
                     if (seform.Equals("Select Service Number"))
                     {
-                        string servicesEntry = "";
+                        string servicesEntry = null;
                         return await SavePostNaira(form, servicesEntry);
                     }
                     return await SavePostNaira(form, seform);
@@ -377,7 +377,7 @@ namespace DebtorsControl.Controllers
                     var seform = form["servicenumber"];
                     if (seform.Equals("Select Service Number"))
                     {
-                        string servicesEntry = "";
+                        string servicesEntry = null;
                         return await SavePostDollar(form, servicesEntry);
                     }
                     return await SavePostDollar(form, seform);

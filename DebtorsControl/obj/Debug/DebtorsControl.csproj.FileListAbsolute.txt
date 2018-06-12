@@ -329,3 +329,4 @@ C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\debtorscontrol\Debtor
 C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\debtorscontrol\DebtorsControl\obj\Debug\DebtorsControl.dll
 C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\debtorscontrol\DebtorsControl\obj\Debug\DebtorsControl.pdb
 C:\Users\akinn\Documents\Visual Studio 2017\DebtorsControl\debtorscontrol\DebtorsControl\obj\Debug\DebtorsControl.csprojAssemblyReference.cache
+C:\inetpub\wwwroot\DebtorsControl\DebtorsControl\obj\Debug\DebtorsControl.csprojResolveAssemblyReference.cache
