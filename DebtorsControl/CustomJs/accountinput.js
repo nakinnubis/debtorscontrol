@@ -68,6 +68,10 @@ $(document).ready(function () {
         NairaEqVal(payable, exrate);
     }
     //().addEventListener("mouseleave", doAmount);
-    document.getElementById("AmountPaid").addEventListener("mouseleave", doAmount);
+    var elistener = document.getElementById("AmountPaid");
+    if (elistener) {
+        document.getElementById("AmountPaid").addEventListener("mouseleave", doAmount);
+    }
+
 
 });

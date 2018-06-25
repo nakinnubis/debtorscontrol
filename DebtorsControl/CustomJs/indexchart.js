@@ -45,11 +45,11 @@ paid.push(objects[key].Paid);
                 labels: month,
                 datasets: [{
                     label: "Unpaid",
-                    backgroundColor: ["red"],
+                    backgroundColor: ["green", "red", "FUCHSIA", "EMERALD", "FOREST", "RUBY", "MAGENTA", "SLATE", "skyyellow", "indigo", "black", "milk"],
                     data: unpaid
                 },{
                     label: "Paid",
-                    backgroundColor: ["green"],
+                    backgroundColor: ["yellow", "purple", "blue", "orange", "skyblue", "pink", "Shamrock", "Rainforest", "Cerulean", "Raspberry", "Mango", "Heat Wave"],
                     data: paid
                 }]
             },
@@ -83,37 +83,7 @@ paid.push(objects[key].Paid);
                
             }          
         }
-//console.log(objects);
-        //var ctx = document.getElementById('myChartBar').getContext('2d');
-        
-        //var chart = new Chart(ctx, {
-        //    // The type of chart we want to create
-        //    type: 'bar',
 
-        //    // The data for our dataset
-        //    data: {
-        //        labels: month,
-        //        datasets:[{
-        //            label: "Unpaid",
-        //            backgroundColor: 'rgba(0, 99, 132, 0.6)',
-        //            data: unpaid,
-        //            fillColor:["red"]
-        //        },{
-        //            label: "Paid",
-        //            backgroundColor: 'rgba(99, 132, 0, 0.6)',
-        //            data: paid,
-        //            fillColor:["green"]
-        //        }]
-        //    },
-
-        //    // Configuration options go here
-        //    options: {
-        //        title: {
-        //            display: true,
-        //            text: 'Naira unpaid vs paid chart'
-        //        }
-        //    }
-        //});
         var densityCanvas = document.getElementById("myChartBar");
 
         Chart.defaults.global.defaultFontFamily = "Lato";
@@ -147,9 +117,13 @@ paid.push(objects[key].Paid);
                 //    categoryPercentage: 0.6
                 //}],
                 yAxes: [{
-                    id: "y-axis-density"
+                    id: "y-axis-credits"
                 }, {
-                    id: "y-axis-gravity"
+                    id: "y-axis-debts"
+                }, {
+                    ticks: {
+                        beginAtZero: true
+                    }
                 }]
             }
         };
@@ -188,11 +162,11 @@ paid.push(objects[key].Paid);
                labels: month,
                datasets:[{
                    label: "Unpaid",
-                   backgroundColor: ["yellow"],
+                   backgroundColor: ["yellow", "purple", "blue", "orange", "skyblue", "pink", "Shamrock", "Rainforest", "Cerulean", "Raspberry", "Mango", "Heat Wave"],
                    data: unpaid                  
                },{
                    label: "Paid",
-                   backgroundColor: ["green"],
+                   backgroundColor: ["green", "red", "fuchsia", "orange", "forest", "ruby", "mangenta", "slate", "skyyellow", "indigo", "black", "milk"],
                    data: paid
                }]
            },
@@ -202,6 +176,13 @@ paid.push(objects[key].Paid);
                 title: {
                     display: true,
                     text: 'Naira unpaid vs paid chart'
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
                 }
             }
         });
@@ -241,11 +222,11 @@ function MediaType(objects, chartid, charttitle) {
             labels: month,
             datasets: [{
                 label: "Unpaid",
-                backgroundColor: ["yellow"],
+                backgroundColor: ["yellow", "purple", "blue", "orange", "skyblue", "peach", "shamrock", "rainforest", "cerulean", "raspberry", "mango", "heat wave"],
                 data: unpaid
             }, {
                 label: "Paid",
-                backgroundColor: ["green"],
+                backgroundColor: ["green", "red", "fuchsia", "orange", "forest", "ruby", "mangenta", "slate", "skyyellow", "indigo", "black", "milk"],
                 data: paid
             }]
         },
@@ -255,6 +236,13 @@ function MediaType(objects, chartid, charttitle) {
             title: {
                 display: true,
                 text: charttitle
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
             }
         }
     });

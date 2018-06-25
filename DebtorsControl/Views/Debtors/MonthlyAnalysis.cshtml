@@ -91,7 +91,12 @@
                                             }*@
                                         <td>@($"{naira.FxRate:n0}")</td>
                                         @*<td>@naira.</td>*@
-                                        <td>@naira.Date.Value.ToString("MMM-yyyy")</td>
+                                        <td>
+                                            @if (naira.Date != null)
+                                            {
+                                                @naira.Date.Value.ToString("MMM-yyyy")
+                                            }
+                                        </td>
                                         <td>@naira.InvoiceNumber</td>
                                         <td>@naira.SeNumber</td>
                                         <td>@($"{naira.Amount:n0}")</td>
@@ -102,8 +107,18 @@
                                         <td>@($"{naira.NairaValue:n0}")</td>
                                         <td>@($"{naira.LcdCharge:n0}")</td>
                                         <td>@($"{naira.Outstanding:n0}")</td>
-                                        <td>@naira.DateSubmitted.Value.ToString("dd-MMM-yyyy")</td>
-                                        <td>@naira.DueDate.Value.ToString("dd-MMM-yyyy")</td>
+                                        <td>
+                                            @if (naira.DateSubmitted != null)
+                                            {
+                                                @naira.DateSubmitted.Value.ToString("dd-MMM-yyyy")
+                                            }
+                                        </td>
+                                        <td>
+                                            @if (naira.DueDate != null)
+                                            {
+                                                @naira.DueDate.Value.ToString("dd-MMM-yyyy")
+                                            }
+                                        </td>
                                         @if (naira.DatePaid == null)
                                         {
                                             <td></td>
@@ -175,7 +190,12 @@
                                                         @foreach (var dola in Model.DollarInvoices)
                                                         {
                                                             <tr>
-                                                                <td>@dola.Date.Value.ToString("MMM-yyyy")</td>
+                                                                <td>
+                                                                    @if (dola.Date != null)
+                                                                    {
+                                                                        @dola.Date.Value.ToString("MMM-yyyy")
+                                                                    }
+                                                                </td>
                                                                 <td>@dola.InvoiceNumber</td>
                                                                 <td>@dola.SeNumber</td>
                                                                 <td>@($"{dola.Amount:n0}")</td>
@@ -185,8 +205,18 @@
                                                                 <td>@($"{dola.AmountPaid:n0}")</td>
                                                                 <td>@($"{dola.LcdCharge:n0}")</td>
                                                                 <td>@($"{dola.Outstanding:n0}")</td>
-                                                                <td>@dola.DateSubmitted.Value.ToString("dd-MMM-yyyy")</td>
-                                                                <td>@dola.DueDate.Value.ToString("dd-MMM-yyyy")</td>
+                                                                <td>
+                                                                    @if (dola.DateSubmitted != null)
+                                                                    {
+                                                                        @dola.DateSubmitted.Value.ToString("dd-MMM-yyyy")
+                                                                    }
+                                                                </td>
+                                                                <td>
+                                                                    @if (dola.DueDate != null)
+                                                                    {
+                                                                        @dola.DueDate.Value.ToString("dd-MMM-yyyy")
+                                                                    }
+                                                                </td>
                                                                 <td>@dola.DatePaid.ToString("dd-MMM-yyyy")</td>
                                                             </tr>
 

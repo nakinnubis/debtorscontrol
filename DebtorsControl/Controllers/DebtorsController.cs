@@ -1078,6 +1078,10 @@ namespace DebtorsControl.Controllers
         {
             ViewBag.UserFullName = Session["AdminFullname"].ToString();
             ViewBag.Username = Session["AdminId"].ToString();
+            ViewBag.PaidNaira = Session["PaidNaira"];
+            ViewBag.PaidDollar = Session["PaidDollar"];
+            ViewBag.Unpaid = Session["Unpaid"];
+            ViewBag.UnpaidDollar = Session["UnpaidDollar"];
             var editinvoiceViewmModel = new InvoiceViewModel
             {
                 GetClients = GetClients(),

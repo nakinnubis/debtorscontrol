@@ -19,7 +19,7 @@
     <AssemblyName>DebtorsControl</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>44307</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -351,6 +351,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Content\util.css" />
     <Content Include="CustomJs\accountinput.js" />
+    <Content Include="CustomJs\Chart.bundle.js" />
+    <Content Include="CustomJs\chartist.min.js" />
     <Content Include="CustomJs\chartjs.min.js" />
     <Content Include="CustomJs\indexchart.js" />
     <Content Include="CustomJs\invoicedropdown.js" />

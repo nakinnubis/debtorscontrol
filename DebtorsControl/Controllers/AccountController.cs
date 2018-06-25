@@ -55,6 +55,12 @@ namespace DebtorsControl.Controllers
                                 return RedirectToAction("Login");
                             }
 
+                            if (pass != username.Password)
+                            {
+                                TempData["PasswordError"] = "Invalid password";
+                                return RedirectToAction("Login");
+                            }
+
                         }
                         else
                         {
