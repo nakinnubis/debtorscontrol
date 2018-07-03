@@ -73,6 +73,8 @@
     <Property Name="RemittanceAdvise" Type="nvarchar(max)" />
     <Property Name="Comments" Type="nvarchar(max)" />
     <Property Name="NairaValue" Type="decimal" Precision="18" Scale="5" />
+    <Property Name="LcdNairaValue" Type="decimal" Precision="18" Scale="5" />
+    <Property Name="NairaOutstanding" Type="decimal" Precision="18" Scale="5" />
   </EntityType>
   <EntityType Name="Reports">
     <Key>

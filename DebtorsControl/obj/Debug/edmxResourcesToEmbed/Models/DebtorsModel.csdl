@@ -73,6 +73,8 @@
     <Property Name="RemittanceAdvise" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="NairaValue" Type="Decimal" Precision="18" Scale="5" />
+    <Property Name="LcdNairaValue" Type="Decimal" Precision="18" Scale="5" />
+    <Property Name="NairaOutstanding" Type="Decimal" Precision="18" Scale="5" />
   </EntityType>
   <EntityType Name="Report">
     <Key>

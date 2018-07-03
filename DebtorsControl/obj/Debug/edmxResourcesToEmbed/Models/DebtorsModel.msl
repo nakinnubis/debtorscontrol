@@ -57,6 +57,8 @@
     <EntitySetMapping Name="Nairas">
       <EntityTypeMapping TypeName="pdInvoiceModel.Naira">
         <MappingFragment StoreEntitySet="Nairas">
+          <ScalarProperty Name="NairaOutstanding" ColumnName="NairaOutstanding" />
+          <ScalarProperty Name="LcdNairaValue" ColumnName="LcdNairaValue" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="ClientName" ColumnName="ClientName" />
           <ScalarProperty Name="InvoiceMonth" ColumnName="InvoiceMonth" />

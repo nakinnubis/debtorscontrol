@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit Dollar Invoice</h2>
+<h2 class="text-center">Edit Dollar Invoice</h2>
 
 <div class="container-fluid">
     <div class="row">
@@ -17,22 +17,28 @@
                     <div class="form-group">
                         @*@Html.EditorFor(model => model.ClientName, new { htmlAttributes = new { @class = "form-control", value = $"{Model.ClientName}"} })*@
                         <div class="row">
-                            <div class="col-md-12">
-                                <label class="control-label col-sm-12"><h3 class="text-center">Client Name</h3></label>
+                            <div class="col-md-3">
+                                <h3 class="text-left">
+                                    <label class="control-label col-sm-12 col-md-12">
+                                        Client Name
+                                    </label>
+                                </h3>
                             </div>
-                            <br />
-                            @Html.EditorFor(model => model.ClientName, new { htmlAttributes = new { @class = "form-control col-md-6", value = $"{Model.ClientName}" } })
+                            <br/>
+                            <div class="col-md-9">
+                                @Html.EditorFor(model => model.ClientName, new { htmlAttributes = new { @class = "form-control", value = $"{Model.ClientName}" } })
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-6">
-                            <label class="control-label col-sm-12"><h3 class="text-center">Invoice Number</h3></label>
+                            <h3 class="text-center"><label class="control-label col-sm-12">Invoice Number</label></h3>
                         </div>
                         <div class="col-md-6">
-                            <label class="control-label col-sm-12"><h3 class="text-center">Service Entry Number</h3></label>
+                            <h3 class="text-center"><label class="control-label col-sm-12">Service Entry Number</label></h3>
                         </div>
                         <br />
-                        <div class="col-md-6">
+                        <div class="col-md-6"> 
                             @Html.EditorFor(model => model.InvoiceNumber, new { htmlAttributes = new { @class = "form-control col-md-12", value = $"{Model.InvoiceNumber}" } })
                         </div>
                         <div class="col-md-6">
@@ -40,22 +46,7 @@
                         </div>
 
                     </div>
-                    <div class="form-group">
-                        <div class="col-md-6">
-                            <label class="control-label col-sm-12"><h3 class="text-center">Date</h3></label>
-                        </div>
-                        <div class="col-md-6">
-                            <label class="control-label col-sm-12"><h3 class="text-center">Amount</h3></label>
-                        </div>
-                        <br />
-                        <div class="col-md-6">
-                            @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control", value = $"{Model.Date:DD-MM-YYYY}", @type = "date" } })
-                        </div>
-                        <div class="col-md-6">
-                            @*@Html.EditorFor(model => model.Amount, new { htmlAttributes = new { disable = true } }, new { @class = "form-control", value = $"{Model.Amount}" })*@
-                            @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control", value = $"{Model.Amount}" } })
-                        </div>
-                    </div>
+
                     <div class="form-group">
                         <div class="col-md-6">
                             <label class="control-label col-sm-12"><h3 class="text-center">Amount Paid</h3></label>
@@ -102,22 +93,6 @@
                         <div class="col-md-6">
                             @*@Html.EditorFor(model => model.Amount, new { htmlAttributes = new { disable = true } }, new { @class = "form-control", value = $"{Model.Amount}" })*@
                             @Html.EditorFor(model => model.Outstanding, new { htmlAttributes = new { @class = "form-control", value = $"{Model.Outstanding}" } })
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-6">
-                            <label class="control-label col-sm-12"><h3 class="text-center">Date Submitted</h3></label>
-                        </div>
-                        <div class="col-md-6">
-                            <label class="control-label col-sm-12"><h3 class="text-center">Due Date</h3></label>
-                        </div>
-                        <br />
-                        <div class="col-md-6">
-                            @Html.EditorFor(model => model.DateSubmitted, new { htmlAttributes = new { @class = "form-control", value = $"{Model.DateSubmitted:MM/dd/yyyy}", @type = "date" } })
-                        </div>
-                        <div class="col-md-6">
-                            @*@Html.EditorFor(model => model.Amount, new { htmlAttributes = new { disable = true } }, new { @class = "form-control", value = $"{Model.Amount}" })*@
-                            @Html.EditorFor(model => model.DueDate, new { htmlAttributes = new { @class = "form-control", value = $"{Model.DueDate:DD-MM-YYYY}", @type = "date" } })
                         </div>
                     </div>
                     <div class="form-group">

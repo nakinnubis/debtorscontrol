@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="pdInvoiceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="pdInvoiceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ActivityLog">
           <Key>
             <PropertyRef Name="Id" />
@@ -78,6 +78,8 @@
           <Property Name="RemittanceAdvise" Type="nvarchar(max)" />
           <Property Name="Comments" Type="nvarchar(max)" />
           <Property Name="NairaValue" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="LcdNairaValue" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="NairaOutstanding" Type="decimal" Precision="18" Scale="5" />
         </EntityType>
         <EntityType Name="Reports">
           <Key>
@@ -149,8 +151,7 @@
             <End Role="Staffs" EntitySet="Staffs" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="pdInvoiceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -227,6 +228,8 @@
           <Property Name="RemittanceAdvise" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="NairaValue" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="LcdNairaValue" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="NairaOutstanding" Type="Decimal" Precision="18" Scale="5" />
         </EntityType>
         <EntityType Name="Report">
           <Key>
@@ -362,6 +365,8 @@
           <EntitySetMapping Name="Nairas">
             <EntityTypeMapping TypeName="pdInvoiceModel.Naira">
               <MappingFragment StoreEntitySet="Nairas">
+                <ScalarProperty Name="NairaOutstanding" ColumnName="NairaOutstanding" />
+                <ScalarProperty Name="LcdNairaValue" ColumnName="LcdNairaValue" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ClientName" ColumnName="ClientName" />
                 <ScalarProperty Name="InvoiceMonth" ColumnName="InvoiceMonth" />

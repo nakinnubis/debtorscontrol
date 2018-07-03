@@ -1,5 +1,9 @@
 ﻿$(document).ready(function () {
-    $('#nairapart').DataTable();
-    $('#dollarpart').DataTable();
-    $('#activity').DataTable();
+   // $('#dollarpart').DataTable();
+    //$('table.nairapart').DataTable();
+    //    $('#activity').DataTable();
+   // $('#dpart').DataTable();
+});
+$(document).ready(function () {
+    $('table.display').DataTable();
 });

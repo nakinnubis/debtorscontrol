@@ -16,7 +16,7 @@ namespace DebtorsControl.Controllers
         {
             using (pdInvoiceEntities db = new pdInvoiceEntities())
             {
-                var invoice = db.Invoices.Where(c => c.ClientName == clientName).Select(c=> new InvoiceNum { InvoiceNumber = c.InvoiceNumber }).ToList();
+                var invoice = db.Invoices.Where(c => c.ClientName == clientName).Select(c=> new InvoiceNum { InvoiceNumber = c.InvoiceNumber }).Where(c=>c.InvoiceNumber !=null && !c.InvoiceNumber.Equals("NULL")).ToList();
                 invoice.Insert(0, new InvoiceNum { InvoiceNumber = "Select Invoice Number" });
                 return invoice;
             }

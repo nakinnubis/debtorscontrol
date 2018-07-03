@@ -15,7 +15,7 @@ function Payable(amount, vat) {
     document.getElementById("Payable").value = payable.toFixed(4);
 }
 function Lcd(amount) {
-    // var fx = parseFloat(document.getElementById("FxRate").value).toFixed(4);
+    var fx = parseFloat($("#FxRate").value).toFixed(4);
     var lcd = 0.01 * parseFloat(amount).toFixed(4);
     document.getElementById("LcdCharge").value = lcd;
 }
@@ -24,9 +24,25 @@ function Outstanding(payable, actual, lcd) {
     if (isNaN(outstanding)) {
         document.getElementById("Outstanding").value = 0;
     } else {
-        document.getElementById("Outstanding").value = outstanding.toFixed(4);
-    }
+        if (outstanding < 0) {
+            var res = outstanding * -1;
+            document.getElementById("Outstanding").value = res.toFixed(4);
+            var outstandNaira = res * parseFloat($("#FxRate").val());
+            document.getElementById("OutNaira").value = outstandNaira;
+        } else {
+            document.getElementById("Outstanding").value = outstanding.toFixed(4);
+            var outstandNaa = outstanding.toFixed(2) * parseFloat($("#FxRate").val());
+            document.getElementById("OutNaira").value = outstandNaa;
+        }
 
+    }
+    var fx = parseFloat($("#FxRate").val());
+    if (isNaN(fx)) {
+        document.getElementById("LcdChargeNaira").value = lcd;
+    } else {
+        var lcdinNaira = fx * lcd;
+        document.getElementById("LcdChargeNaira").value = lcdinNaira;
+    }
 }
 function WithHoldingTax(amount) {
     var withHold = 0.05 * parseFloat(amount).toFixed(4);

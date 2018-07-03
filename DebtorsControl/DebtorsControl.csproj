@@ -3495,6 +3495,7 @@
     <Compile Include="Repositories\IDebtorsAccounts.cs" />
     <Compile Include="Repositories\IDebtorsList.cs" />
     <Compile Include="ViewModel\ActivityViewModel.cs" />
+    <Compile Include="ViewModel\BackUpViewModel.cs" />
     <Compile Include="ViewModel\ClientsViewModel.cs" />
     <Compile Include="ViewModel\EditViewModel.cs" />
     <Compile Include="ViewModel\InvoiceExport.cs" />
@@ -4116,6 +4117,7 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Debtors\Reconcilation.cshtml" />
+    <Content Include="Views\Debtors\AnnualDebtors.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -40,10 +40,10 @@ namespace DebtorsControl.Controllers
                 using (pdInvoiceEntities db = new pdInvoiceEntities())
                 {
                     var year = DateTime.Now.Year;
-                    var data = db.Nairas.Count(c =>c.Outstanding == 0);
-                    var datadollar = db.Dollars.Count(c =>c.Outstanding == 0);
+                    var data = db.Nairas.Count(c => c.Outstanding == 0);
+                    var datadollar = db.Dollars.Count(c => c.Outstanding == 0);
                     var unpaid = db.Nairas.Count(c => c.Outstanding != 0);
-                    var unpaiddollar = db.Dollars.Count(c =>c.Outstanding != 0);
+                    var unpaiddollar = db.Dollars.Count(c => c.Outstanding != 0);
                     Session["PaidNaira"] = data;
                     Session["PaidDollar"] = datadollar;
                     Session["Unpaid"] = unpaid;
@@ -293,12 +293,8 @@ namespace DebtorsControl.Controllers
             var comments = form["comments"];
             var withold = form["WithHoldingTax"];
             var nairaequival = form["NairaEquiv"];
-            // var remittance = file;
-            // var httpServerUtilityBase = this.Server;
-            //if (httpServerUtilityBase != null)
-            //   {
-            ////  System.IO.File.Move(pathtoremittance,$"{}");
-
+            var nairaoutstand = form["OutNaira"];
+            var nairalcd = form["LcdChargeNaira"];
             using (pdInvoiceEntities db = new pdInvoiceEntities())
             {
                 if (db.Nairas.Any(c => c.InvoiceNumber.Equals(invoicenum)))
@@ -320,7 +316,9 @@ namespace DebtorsControl.Controllers
                     TotalInvoice = decimal.Parse(totalinvoice),
                     Payable = decimal.Parse(payable),
                     LcdCharge = decimal.Parse(lcdcharge),
+                    LcdNairaValue = decimal.Parse(nairalcd),
                     Outstanding = decimal.Parse(outstanding),
+                    NairaOutstanding = decimal.Parse(nairaoutstand),
                     WithHoldingTax = decimal.Parse(withold),
                     DateSubmitted = DateTime.Parse(datesubmitted),
                     DueDate = DateTime.Parse(duedate),
@@ -591,9 +589,9 @@ namespace DebtorsControl.Controllers
                         c.SENumber.Equals(servicenum));
                     decimal[] result = new decimal[3];
                     if (naira != null)
-                        result[0] = (decimal) naira.LcdCharge;
-                    result[1] = (decimal) naira.Amount;
-                    result[2] = (decimal) naira.Payable;
+                        result[0] = (decimal)naira.LcdCharge;
+                    result[1] = (decimal)naira.Amount;
+                    result[2] = (decimal)naira.Payable;
                     return result;
                 }
                 else
@@ -794,6 +792,7 @@ namespace DebtorsControl.Controllers
         {
             ViewBag.UserFullName = Session["AdminFullname"].ToString();
             ViewBag.Username = Session["AdminId"].ToString();
+            ViewBag.TypeError = TempData["TypeError"];
             var monthlyAnalysisViewmModel = new InvoiceViewModel
             {
                 GetClients = GetClients(),
@@ -887,7 +886,7 @@ namespace DebtorsControl.Controllers
             {
                 var nairapart = new NairaInvoice
                 {
-                    Date =n.InvoiceMonth.Value.Date,
+                    Date = n.InvoiceMonth.Value.Date,
                     InvoiceNumber = n.InvoiceNumber,
                     SeNumber = n.SENumber,
                     FxRate = n.FxRate,
@@ -948,26 +947,139 @@ namespace DebtorsControl.Controllers
         {
             var gv = new GridView();
             var clientname = form["GetClients"]; //Session["ClientId"].ToString();
-            var year = form["YearList"];
+           
+            var yr = int.Parse(form["Year"]);
+            var downloadoption = form["downloadoption"];
+            var invoiceoption = form["invoiceoption"];
+            var years = form["YearList"] ?? $"{DateTime.Now.Year}";
+            var year = int.Parse(years);
             // var _year = int.Parse(year);
             // var datatype = form["DataType"].ToString();
             //   var date = DateTime.UtcNow.ToLongDateString();
-            gv.DataSource = GetAvailableDataByProspect(clientname, year);
-            gv.DataBind();
-            Response.ClearContent();
-            Response.Buffer = true;
-            Response.AddHeader("content-disposition",
-                "attachment; filename=export.xls");
-            Response.ContentType = "application/ms-excel";
-            Response.Charset = "";
             StringWriter objStringWriter = new StringWriter();
             HtmlTextWriter objHtmlTextWriter = new HtmlTextWriter(objStringWriter);
-            gv.RenderControl(objHtmlTextWriter);
-            Response.Output.Write(objStringWriter.ToString());
-            Response.Flush();
-            Response.End();
-            return RedirectToAction("MonthlyAnalysis");
+            if (String.IsNullOrEmpty(clientname))
+            {
+                if (yr.GetType() != typeof(int))
+                {
+                    TempData["TypeError"] = "Year is not a valid type";
+                    return RedirectToAction("AnnualDebtors");
+                }
+                
+                if (downloadoption.Equals("Select download option"))
+                {
+                    return View("AnnualDebtors");
+                }
 
+              //  if(invoiceoption.Equals(Dollar))
+                if (invoiceoption.Equals("Dollar") && downloadoption.Equals("all"))
+                {
+                    var res = GetAvailableDataByProspect(yr);
+                    gv.DataSource = res.Where(c => c.InvoiceType == "Dollar");
+                    gv.DataBind();
+                    Response.ClearContent();
+                    Response.Buffer = true;
+                    Response.AddHeader("content-disposition",
+                        "attachment; filename=Dollar Debtors Report.xls");
+                    Response.ContentType = "application/ms-excel";
+                    Response.Charset = "";
+                    gv.RenderControl(objHtmlTextWriter);
+                    Response.Output.Write(objStringWriter.ToString());
+                    Response.Flush();
+                    Response.End();
+                    return RedirectToAction("AnnualDebtors");
+                }
+
+                if (invoiceoption.Equals("Naira") && downloadoption.Equals("all"))
+                {
+                    gv.DataSource = GetAvailableDataByProspect(yr).Where(c => c.InvoiceType == "Naira");
+                    gv.DataBind();
+                    Response.ClearContent();
+                    Response.Buffer = true;
+                    Response.AddHeader("content-disposition",
+                        "attachment; filename=Naira Debtors Report.xls");
+                    Response.ContentType = "application/ms-excel";
+                    Response.Charset = "";
+                    gv.RenderControl(objHtmlTextWriter);
+                    Response.Output.Write(objStringWriter.ToString());
+                    Response.Flush();
+                    Response.End();
+                    return RedirectToAction("AnnualDebtors");
+                }
+
+                if (downloadoption.Equals("Summary") && invoiceoption.Equals("Summary"))
+                {
+                    var data = GetsummaryByYear(yr)
+                        .Where(c => c.TotalDue != null && c.TotalDue != 0 );
+                    gv.DataSource = data;
+                    gv.DataBind();
+                    Response.ClearContent();
+                    Response.Buffer = true;
+                    Response.AddHeader("content-disposition",
+                        "attachment; filename=Summary Report.xls");
+                    Response.ContentType = "application/ms-excel";
+                    Response.Charset = "";
+                    gv.RenderControl(objHtmlTextWriter);
+                    Response.Output.Write(objStringWriter.ToString());
+                    Response.Flush();
+                    Response.End();
+                    return RedirectToAction("AnnualDebtors");
+                }
+
+                if (downloadoption.Equals("Outstanding alone") && invoiceoption.Equals("Dollar"))
+                {
+                    var data = GetAvailableDataByProspect(yr)
+                        .Where(c => c.Outstanding != null && c.Outstanding != 0 && c.InvoiceType == "Dollar");
+                    gv.DataSource = data;
+                    gv.DataBind();
+                    Response.ClearContent();
+                    Response.Buffer = true;
+                    Response.AddHeader("content-disposition",
+                        "attachment; filename=Dollar Debtors Report.xls");
+                    Response.ContentType = "application/ms-excel";
+                    Response.Charset = "";
+                    gv.RenderControl(objHtmlTextWriter);
+                    Response.Output.Write(objStringWriter.ToString());
+                    Response.Flush();
+                    Response.End();
+                    return RedirectToAction("AnnualDebtors");
+                    
+                }
+                if (downloadoption.Equals("Outstanding alone") && invoiceoption.Equals("Naira"))
+                {
+                    var data = GetAvailableDataByProspect(yr)
+                        .Where(c => c.Outstanding != null && c.Outstanding != 0 && c.InvoiceType == "Naira");
+                    gv.DataSource = data;
+                    gv.DataBind();
+                    Response.ClearContent();
+                    Response.Buffer = true;
+                    Response.AddHeader("content-disposition",
+                        "attachment; filename=Naira Debtors Report.xls");
+                    Response.ContentType = "application/ms-excel";
+                    Response.Charset = "";
+                    gv.RenderControl(objHtmlTextWriter);
+                    Response.Output.Write(objStringWriter.ToString());
+                    Response.Flush();
+                    Response.End();
+                    return RedirectToAction("AnnualDebtors");
+                }
+            }
+
+           // if (!String.IsNullOrEmpty(clientname))           
+             
+                gv.DataSource = GetAvailableDataByProspect(clientname, year);
+                gv.DataBind();
+                Response.ClearContent();
+                Response.Buffer = true;
+                Response.AddHeader("content-disposition",
+                    "attachment; filename=export.xls");
+                Response.ContentType = "application/ms-excel";
+                Response.Charset = "";
+                gv.RenderControl(objHtmlTextWriter);
+                Response.Output.Write(objStringWriter.ToString());
+                Response.Flush();
+                Response.End();
+                return RedirectToAction("MonthlyAnalysis");
         }
 
         public ActionResult ActivityDownload(FormCollection form)
@@ -999,11 +1111,11 @@ namespace DebtorsControl.Controllers
             }
 
         }
-        public IList<InvoiceExport> GetAvailableDataByProspect(string clientname, string year)
+        public IList<InvoiceExport> GetAvailableDataByProspect(string clientname, int year)
         {
             using (pdInvoiceEntities db = new pdInvoiceEntities())
             {
-                var _year = int.Parse(year);
+                var _year = year;
                 // long id = 0;
                 //  var dataList = new List<InvoiceExport>();
                 var naira = db.Nairas.Where(c => c.DateSubmitted.Value.Year.Equals(_year) && c.ClientName.Equals(clientname))
@@ -1015,64 +1127,100 @@ namespace DebtorsControl.Controllers
                 return IterateDataList(naira, dollar);
             }
         }
+        public IList<InvoiceExport> GetAvailableDataByProspect(int year)
+        {
+            using (pdInvoiceEntities db = new pdInvoiceEntities())
+            {
+                var _year = year;
+                var naira = db.Nairas.Where(c => c.InvoiceMonth.Value != null).Where(c => c.DateSubmitted.Value.Year.Equals(_year))
+                    .AsEnumerable();
+                var dollar = db.Dollars.Where(c => c.InvoicedMonth.Value != null).Where(c => c.DateSubmitted.Value.Year.Equals(_year))
+                    .AsEnumerable();
+                return IterateDataList(naira, dollar);
+            }
+        }
+
+        public IList<DebtSummary> GetsummaryByYear(int year)
+        {
+            using (pdInvoiceEntities db = new pdInvoiceEntities())
+            {
+                var naira = db.Nairas.Where(c => c.InvoiceMonth.Value != null).Where(c => c.DateSubmitted.Value.Year.Equals(year))
+                    .AsEnumerable();
+                var dollar = db.Dollars.Where(c => c.InvoicedMonth.Value != null).Where(c => c.DateSubmitted.Value.Year.Equals(year))
+                    .AsEnumerable();
+                return DebtSummaries(naira, dollar); 
+            }
+        }
 
         private IList<InvoiceExport> IterateDataList(IEnumerable<Naira> naira, IEnumerable<Dollar> dollar)
         {
             var invoiceexport = new List<InvoiceExport>();
-
-            foreach (var nair in naira)
+            invoiceexport.AddRange(naira.Select(nair=> new InvoiceExport
             {
-                var export = new InvoiceExport
-                {
-                    Date = $"{nair.DateSubmitted.Value.Month}/{nair.DateSubmitted.Value.Year}",
-                    InvoiceType = "Naira",
-                    ClientName = nair.ClientName,
-                    InvoiceNumber = nair.InvoiceNumber,
-                    SeNumber = nair.SENumber,
-                    FxRate = nair.FxRate,
-                    Amount = nair.Amount,
-                    Vat = nair.VAT,
-                    TotalInvoice = nair.TotalInvoice,
-                    Payable = nair.Payable,
-                    NairaEquiv = nair.NairaValue,
-                    LcdCharge = nair.LcdCharge,
-                    AmountPaid = nair.AmountPaid,
-                    Outstanding = nair.Outstanding,
-                    DateSubmitted = nair.DateSubmitted.Value.ToString("dd-MMMM-yyyy"),
-                    DueDate = nair.DueDate.Value.ToString("dd-MMMM-yyyy"),
-                    WithHoldingTax = nair.WithHoldingTax,
-                    Comments = nair.Comments,
-                };
-                invoiceexport.Add(export);
-            }
-
-            foreach (var nair in dollar)
+                Date = $"{nair.DateSubmitted.Value.Month}/{nair.DateSubmitted.Value.Year}",
+                InvoiceType = "Naira",
+                ClientName = nair.ClientName,
+                InvoiceNumber = nair.InvoiceNumber,
+                SeNumber = nair.SENumber,
+                FxRate = nair.FxRate,
+                Amount = nair.Amount,
+                Vat = nair.VAT,
+                TotalInvoice = nair.TotalInvoice,
+                Payable = nair.Payable,
+                NairaEquiv = nair.NairaValue,
+                LcdCharge = nair.LcdCharge,
+                AmountPaid = nair.AmountPaid,
+                Outstanding = nair.Outstanding,
+                DateSubmitted = nair.DateSubmitted.Value.ToString("dd-MMMM-yyyy"),
+                DueDate = nair.DueDate?.ToString("dd-MMMM-yyyy"),
+                WithHoldingTax = nair.WithHoldingTax,
+                Comments = nair.Comments,
+            }));
+            var dollars = dollar.ToList();
+            invoiceexport.AddRange(dollars.Select(nair => new InvoiceExport
             {
-                var export = new InvoiceExport
-                {
-                    Date = $"{nair.DateSubmitted.Value.Month}/{nair.DateSubmitted.Value.Year}",
-                    InvoiceType = "Dollar",
-                    ClientName = nair.ClientName,
-                    InvoiceNumber = nair.InvoiceNumber,
-                    SeNumber = nair.SENumber,
-                    FxRate = (decimal)0.00000,
-                    Amount = nair.Amount,
-                    Vat = nair.VAT,
-                    TotalInvoice = nair.TotalInvoice,
-                    Payable = nair.Payable,
-                    LcdCharge = nair.LcdCharge,
-                    AmountPaid = nair.AmountPaid,
-                    Outstanding = nair.Outstanding,
-                    DateSubmitted = nair.DateSubmitted.Value.ToString("dd-MMMM-yyyy"),
-                    DueDate = nair.DueDate.Value.ToString("dd-MMMM-yyyy"),
-                    WithHoldingTax = nair.WithHoldinTax,
-                    Comments = nair.Comments
-                };
-                invoiceexport.Add(export);
-            }
+                Date = $"{nair.DateSubmitted.Value.Month}/{nair.DateSubmitted.Value.Year}",
+                InvoiceType = "Dollar",
+                ClientName = nair.ClientName,
+                InvoiceNumber = nair.InvoiceNumber,
+                SeNumber = nair.SENumber,
+                FxRate = (decimal)0.00000,
+                Amount = nair.Amount,
+                Vat = nair.VAT,
+                TotalInvoice = nair.TotalInvoice,
+                Payable = nair.Payable,
+                LcdCharge = nair.LcdCharge,
+                AmountPaid = nair.AmountPaid,
+                Outstanding = nair.Outstanding,
+                DateSubmitted = nair.DateSubmitted.Value.ToString("dd-MMMM-yyyy"),
+                DueDate = nair.DueDate?.ToString("dd-MMMM-yyyy"),
+                WithHoldingTax = nair.WithHoldinTax,
+                Comments = nair.Comments
+            }));
 
             return invoiceexport;
         }
+
+        private IList<DebtSummary> DebtSummaries(IEnumerable<Naira> naira, IEnumerable<Dollar> dollar)
+        {
+            var summaryexport = new List<DebtSummary>();
+            summaryexport.AddRange(naira.GroupBy(c=> new {c.ClientName, DateSubmitted =c.DateSubmitted.Value.Year}).Select(nair => new DebtSummary
+            {
+                InvoiceType = "Naira",
+                ClientName = nair.Key.ClientName,
+                Year =nair.Key.DateSubmitted,
+                TotalDue = nair.Sum(c=>c.Outstanding)
+            }));
+            summaryexport.AddRange(dollar.GroupBy(c => new {c.ClientName, DateSubmitted = c.DateSubmitted.Value.Year }).Select(nair => new DebtSummary
+            {
+                InvoiceType = "Dollar",
+                ClientName = nair.Key.ClientName,
+                Year = nair.Key.DateSubmitted,
+                TotalDue = nair.Sum(c => c.Outstanding)
+            }));
+            return summaryexport;
+        }
+
         [HttpGet]
         public ActionResult EditInvoice()
         {
@@ -1515,9 +1663,9 @@ namespace DebtorsControl.Controllers
                                 .Select(e => new NairaInvoice
                                 {
                                     ClientName = e["ClientName"],
-                                //Year = int.Parse(e["Year"]),
-                                // Month = int.Parse(e["Month"]),decimal.Parse(e["FxRate"])
-                                InvoiceNumber = e["InvoiceNumber"],
+                                    //Year = int.Parse(e["Year"]),
+                                    // Month = int.Parse(e["Month"]),decimal.Parse(e["FxRate"])
+                                    InvoiceNumber = e["InvoiceNumber"],
                                     SeNumber = e["SENumber"],
                                     FxRate = decimal.Parse(e["FxRate"] == null || e["FxRate"].ToString() == String.Empty ? "0" : e["FxRate"].ToString()),
                                     Amount = decimal.Parse(e["Amount"] == null || e["Amount"].ToString() == String.Empty ? "0" : e["Amount"].ToString()),
@@ -1539,12 +1687,12 @@ namespace DebtorsControl.Controllers
                                 .Select(c => new Naira
                                 {
                                     ClientName = c.ClientName,
-                                //Year = (int)c.Year,
-                                // Month = c.Month,
-                                InvoiceNumber = c.InvoiceNumber,
+                                    //Year = (int)c.Year,
+                                    // Month = c.Month,
+                                    InvoiceNumber = c.InvoiceNumber,
                                     SENumber = c.SeNumber,
-                                //   FxRate = c.FxRate,
-                                Amount = c.Amount,
+                                    //   FxRate = c.FxRate,
+                                    Amount = c.Amount,
                                     VAT = c.Vat,
                                     TotalInvoice = c.TotalInvoice,
                                     Payable = c.Payable,
@@ -1565,9 +1713,9 @@ namespace DebtorsControl.Controllers
                                 .Select(e => new DollarInvoice
                                 {
                                     ClientName = e["ClientName"],
-                                //   Year = int.Parse(e["Year"]),
-                                //  Month = int.Parse(e["Month"]),
-                                InvoiceNumber = e["InvoiceNumber"],
+                                    //   Year = int.Parse(e["Year"]),
+                                    //  Month = int.Parse(e["Month"]),
+                                    InvoiceNumber = e["InvoiceNumber"],
                                     SeNumber = e["SENumber"],
                                     Amount = decimal.Parse(e["Amount"]),
                                     Vat = decimal.Parse(e["VAT"]),
@@ -1587,9 +1735,9 @@ namespace DebtorsControl.Controllers
                                 .Select(c => new Dollar
                                 {
                                     ClientName = c.ClientName,
-                                //  Year = (int)c.Year,
-                                // Month = c.Month,
-                                InvoiceNumber = c.InvoiceNumber,
+                                    //  Year = (int)c.Year,
+                                    // Month = c.Month,
+                                    InvoiceNumber = c.InvoiceNumber,
                                     SENumber = c.SeNumber,
                                     Amount = c.Amount,
                                     VAT = c.Vat,
@@ -1619,7 +1767,7 @@ namespace DebtorsControl.Controllers
                             db.SaveChanges();
                             TempData["Message"] = "Invoice upload was successfully. Thank you";
                             return RedirectToAction("UploadInvoices");
-                        }     
+                        }
                         TempData["Error"] = "Invalid Selection";
                         return RedirectToAction("UploadInvoices");
                     }
@@ -1789,6 +1937,97 @@ namespace DebtorsControl.Controllers
                 //ContentDisposition = ContentDisposition.Inline
             }; ;
         }
+
+        [HttpGet]
+        public ActionResult AnnualDebtors()
+        {
+            ViewBag.UserFullName = Session["AdminFullname"].ToString();
+            ViewBag.Username = Session["AdminId"].ToString();
+            ViewBag.TypeError = TempData["TypeError"];
+            var monthlyAnalysisViewmModel = new InvoiceViewModel
+            {
+                YearList = YearList()
+            };
+            return View(monthlyAnalysisViewmModel);
+        }
+        [HttpPost]
+        public ViewResult AnnualDebtors(FormCollection form)
+        {
+            var year = form["YearList"];
+            Session["YearList"] = year;
+            ViewBag.PaidNaira = Session["PaidNaira"];
+            ViewBag.PaidDollar = Session["PaidDollar"];
+            ViewBag.Unpaid = Session["Unpaid"];
+            ViewBag.UnpaidDollar = Session["UnpaidDollar"];
+            using (pdInvoiceEntities db = new pdInvoiceEntities())
+            {
+                var _year = int.Parse(year);
+                var monthlyAnalysisViewmModel = new InvoiceViewModel
+                {
+                    NairaInvoices = GetNairaInvoices(db, _year),
+                    DollarInvoices = GetDollarInvoices(db, _year),
+                    YearList = YearList()
+                };
+                return View(monthlyAnalysisViewmModel);
+            }
+        }
+        public List<NairaInvoice> GetNairaInvoices(pdInvoiceEntities db, int year)
+        {
+            var naira = db.Nairas.Where(c => c.InvoiceMonth.Value.Year.Equals(year)).OrderBy(c => c.InvoiceMonth).ToList();
+            var nairainvoice = new List<NairaInvoice>();
+            foreach (var n in naira)
+            {
+                var nairapart = new NairaInvoice
+                {
+                    Date = n.InvoiceMonth?.Date,
+                    InvoiceNumber = n.InvoiceNumber,
+                    SeNumber = n.SENumber,
+                    FxRate = n.FxRate,
+                    Amount = n.Amount,
+                    Vat = n.VAT,
+                    TotalInvoice = n.TotalInvoice,
+                    Payable = n.Payable,
+                    AmountPaid = n.AmountPaid,
+                    NairaValue = n.NairaValue,
+                    LcdCharge = n.LcdCharge,
+                    Outstanding = n.Outstanding,
+                    DateSubmitted = n.DateSubmitted,
+                    DatePaid = n.DatePaid,
+                    DueDate = n.DueDate,
+                    Comments = n.Comments
+                };
+                nairainvoice.Add(nairapart);
+            }
+
+            return nairainvoice;
+        }
+        public List<DollarInvoice> GetDollarInvoices(pdInvoiceEntities db, int year)
+        {
+            var dollar = db.Dollars.Where(c => c.InvoicedMonth.Value.Year.Equals(year)).OrderBy(c => c.DateSubmitted.Value.Month).ToList();
+            var dollarinvoice = new List<DollarInvoice>();
+            foreach (var n in dollar)
+            {
+                var nairapart = new DollarInvoice
+                {
+                    Date = n.InvoicedMonth?.Date,
+                    InvoiceNumber = n.InvoiceNumber,
+                    SeNumber = n.SENumber,
+                    Amount = n.Amount,
+                    Vat = n.VAT,
+                    TotalInvoice = n.TotalInvoice,
+                    Payable = n.Payable,
+                    AmountPaid = n.AmountPaid,
+                    LcdCharge = n.LcdCharge,
+                    Outstanding = n.Outstanding,
+                    DateSubmitted = n.DateSubmitted,
+                    DueDate = n.DueDate
+                };
+                dollarinvoice.Add(nairapart);
+            }
+
+            return dollarinvoice;
+        }
+
     }
 
     internal class ExcelClientUpload

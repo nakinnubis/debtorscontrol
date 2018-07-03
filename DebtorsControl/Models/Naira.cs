@@ -34,5 +34,7 @@ namespace DebtorsControl.Models
         public string RemittanceAdvise { get; set; }
         public string Comments { get; set; }
         public Nullable<decimal> NairaValue { get; set; }
+        public Nullable<decimal> LcdNairaValue { get; set; }
+        public Nullable<decimal> NairaOutstanding { get; set; }
     }
 }

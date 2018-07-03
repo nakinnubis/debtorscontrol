@@ -29,4 +29,12 @@ namespace DebtorsControl.ViewModel
         public string Comments { get; set; }
        
     }
+
+    public class DebtSummary
+    {
+        public string InvoiceType { get; set; }
+        public string ClientName { get; set; }
+        public  int? Year { get; set; }
+        public decimal? TotalDue { get; set; }
+    }
 }

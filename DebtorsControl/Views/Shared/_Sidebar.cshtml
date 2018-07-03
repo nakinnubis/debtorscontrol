@@ -64,6 +64,9 @@
                                     @Html.ActionLink("Monthly Analysis", "MonthlyAnalysis", "Debtors")
                                 </li>
                                 <li>
+                                    @Html.ActionLink("Annual Debtors Analysis", "AnnualDebtors", "Debtors")
+                                </li>
+                                <li>
                                     @Html.ActionLink("Reconcilation Report", "Reconcilation", "Debtors", null, new { target = "blank" })
                                 </li>
                                 <li>
@@ -117,17 +120,21 @@
                                 <li>
                                     @Html.ActionLink("Monthly Analysis", "MonthlyAnalysis", "Debtors")
                                 </li>
+                                <li>
+                                    @Html.ActionLink("Annual Debtors Analysis", "AnnualDebtors", "Debtors")
+                                </li>
                                     <li>
                                         @Html.ActionLink("Reconcilation Report", "Reconcilation", "Debtors", null, new { target = "blank" })
                                     </li>
-
-
                                     <li>
                                         @Html.ActionLink("Update Remittance Advise", "RemittanceAdvise", "Debtors")
                                     </li>
-                                    <li>
-                                        @Html.ActionLink("Change Password", "ChangePassword", "Account")
-                                    </li>
+                                <li>
+                                    @Html.ActionLink("Change Password", "ChangePassword", "Account")
+                                </li>
+                                <li>
+                                    @Html.ActionLink("Generate Excel Backup", "ChangePassword", "Account")
+                                </li>
                             }
                         }
                     }
