@@ -37,9 +37,19 @@
                 <td>@Model.Payable</td>
                 <td>@Model.LcdCharge</td>
                 <td>@Model.AmountPaid</td>
-                <td>@Model.DateSubmitted.ToString("dd-MMM-yyyy")</td>
-                <td>@Model.DueDate.ToString("dd-MMM-yyyy")</td>
-                <td>@Model.DueDate.ToString("dd-MMM-yyyy")</td>
+                <td>
+                    @if (Model.DateSubmitted != null)
+                    {
+                        @Model.DateSubmitted.Value.ToString("dd-MMM-yyyy")
+                    }
+                </td>
+                <td>
+                    @if (Model.DueDate != null)
+                    {
+                        @Model.DueDate.Value.ToString("dd-MMM-yyyy")@:</td>
+                        @:<td>@Model.DueDate.Value.ToString("dd-MMM-yyyy")
+                    }
+                </td>
                 <td>@($"{Model.Amount:n0}")</td>
                 @*<td>@Html.ActionLink("Edit", "EditNaira", new { invoicenum = Model.InvoiceNumber, servicenum = Model.SeNumber }, new { @class = "btn btn-primary" })</td>*@
                 <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete</button></td>

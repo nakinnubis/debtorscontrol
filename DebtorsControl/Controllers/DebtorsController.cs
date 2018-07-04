@@ -947,8 +947,8 @@ namespace DebtorsControl.Controllers
         {
             var gv = new GridView();
             var clientname = form["GetClients"]; //Session["ClientId"].ToString();
-           
-            var yr = int.Parse(form["Year"]);
+            int yr;
+            
             var downloadoption = form["downloadoption"];
             var invoiceoption = form["invoiceoption"];
             var years = form["YearList"] ?? $"{DateTime.Now.Year}";
@@ -958,8 +958,9 @@ namespace DebtorsControl.Controllers
             //   var date = DateTime.UtcNow.ToLongDateString();
             StringWriter objStringWriter = new StringWriter();
             HtmlTextWriter objHtmlTextWriter = new HtmlTextWriter(objStringWriter);
-            if (String.IsNullOrEmpty(clientname))
+            if (String.IsNullOrEmpty(clientname) && form["Year"] != null)
             {
+                yr = int.Parse(form["Year"]);
                 if (yr.GetType() != typeof(int))
                 {
                     TempData["TypeError"] = "Year is not a valid type";
@@ -1071,8 +1072,9 @@ namespace DebtorsControl.Controllers
                 gv.DataBind();
                 Response.ClearContent();
                 Response.Buffer = true;
+            var options = $"attachment; filename={clientname} Year {year} Monthly break down.xls";
                 Response.AddHeader("content-disposition",
-                    "attachment; filename=export.xls");
+                    options);
                 Response.ContentType = "application/ms-excel";
                 Response.Charset = "";
                 gv.RenderControl(objHtmlTextWriter);

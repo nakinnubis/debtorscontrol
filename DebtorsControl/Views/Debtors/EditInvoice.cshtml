@@ -87,7 +87,12 @@
                             <td>@($"{naira.Payable:n0}")</td>
                             <td>@($"{naira.LcdCharge:n0}")</td>
                             <td>@($"{naira.AmountPaid:n0}")</td>
-                            <td>@naira.DateSubmitted.Value.ToString("dd-MMM-yyyy")</td>
+                            <td>
+                                @if (naira.DateSubmitted != null)
+                                {
+                                    @naira.DateSubmitted.Value.ToString("dd-MMM-yyyy")
+                                }
+                            </td>
                             <td>
                                 @if (naira.DueDate != null)
                                 {
@@ -155,7 +160,11 @@
                             <td>@($"{dola.Payable:n0}")</td>
                             <td>@($"{dola.LcdCharge:n0}")</td>
                             <td>@($"{dola.AmountPaid:n0}")</td>
-                            <td>@dola.DateSubmitted.Value.ToString("dd-MMM-yyyy")
+                            <td>
+                                @if (dola.DateSubmitted != null)
+                                {
+                                    @dola.DateSubmitted.Value.ToString("dd-MMM-yyyy")
+                                }
                             </td>
                             <td>
                                 @if (dola.DueDate != null)
